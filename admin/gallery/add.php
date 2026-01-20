@@ -30,7 +30,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST') {
                     $image_name = $upload_result['filename'];
                     $title = !empty($_POST['titles'][$key]) ? mysqli_real_escape_string($conn, trim($_POST['titles'][$key])) : 'Gallery Image';
                     
-                    $insert_query = "INSERT INTO gallery_new (title, image_path, category, display_order, uploaded_at) 
+                    $insert_query = "INSERT INTO gallery_new (title, image_url, category, display_order, created_at) 
                                     VALUES ('$title', '$image_name', '$category', $display_order, NOW())";
                     
                     if(mysqli_query($conn, $insert_query)) {

@@ -7,6 +7,9 @@ RewriteCond %{REQUEST_FILENAME} !-d
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteRule ^([a-zA-Z0-9-/]+)$ $1.php [L]
 
+# SEO-friendly package details URL: /package/slug
+RewriteRule ^package/([a-zA-Z0-9-]+)$ package.php?slug=$1 [L,QSA]
+
 # Redirect direct .php access to clean URL
 RewriteCond %{THE_REQUEST} ^[A-Z]{3,}\s([^.]+)\.php [NC]
 RewriteRule ^([a-zA-Z0-9-/]+)\.php$ /tajmahaldaytour/$1 [R=301,L]

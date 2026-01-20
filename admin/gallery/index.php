@@ -48,12 +48,12 @@ include '../includes/sidebar.php';
                     <div class="col-md-3">
                         <div class="gallery-item">
                             <div class="gallery-image">
-                                <img src="<?php echo SITE_URL . 'uploads/gallery/' . $image['image_path']; ?>" 
-                                     alt="<?php echo htmlspecialchars($image['title']); ?>" 
-                                     class="img-fluid">
+                                  <img src="<?php echo SITE_URL . 'uploads/gallery/' . $image['image_url']; ?>" 
+                                      alt="<?php echo htmlspecialchars($image['title']); ?>" 
+                                      class="img-fluid">
                                 <div class="gallery-overlay">
-                                    <a href="<?php echo SITE_URL . 'uploads/gallery/' . $image['image_path']; ?>" 
-                                       target="_blank" class="btn btn-sm btn-light me-1">
+                                                <a href="<?php echo SITE_URL . 'uploads/gallery/' . $image['image_url']; ?>" 
+                                                    target="_blank" class="btn btn-sm btn-light me-1">
                                         <i class="fas fa-eye"></i>
                                     </a>
                                     <a href="delete.php?id=<?php echo $image['id']; ?>" 
