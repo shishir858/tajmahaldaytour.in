@@ -1,0 +1,39 @@
+
+<?php
+// Vehicles page for tajmahaldaytour
+include 'includes/config.php';
+$page_title = 'Our Vehicles - tajmahaldaytour';
+include 'includes/header.php';
+?>
+
+<!-- Header Banner -->
+<section class="vehicles-header-banner d-flex align-items-center justify-content-center text-center" style="position:relative;min-height:320px;background:linear-gradient(120deg,#ffc722 0%,#ff7b00 60%,#ff2e63 100%);overflow:hidden;">
+    <img src="assets/image/banner/4.jpg" alt="Vehicles Banner" style="position:absolute;top:0;left:0;width:100%;height:100%;object-fit:cover;opacity:0.18;z-index:1;">
+    <div class="container position-relative" style="z-index:2;">
+        <h1 class="display-4 fw-bold text-white mb-2" style="text-shadow:0 2px 12px #000a;">Our Vehicles</h1>
+        <p class="lead text-white mb-0" style="font-size:1.25rem;">Choose from our fleet of modern, comfortable vehicles for your journey.</p>
+    </div>
+</section>
+
+<!-- Main Vehicles Section -->
+<section id="vehicles-main" class="section" style="background:#fffbe7; padding-top:48px; padding-bottom:48px;">
+    <div class="container">
+        <div class="row">
+            <?php
+            $result = $conn->query("SELECT * FROM vehicles_new WHERE is_active = 1");
+            while($v = $result->fetch_assoc()): ?>
+            <div class="col-md-4 col-6 mb-4">
+                <div class="card-3d" style="overflow:hidden;box-shadow:0 8px 32px rgba(44,62,80,0.12);border-radius:18px;">
+                    <img src="<?php echo htmlspecialchars($v['image_url'] ?? 'uploads/vehicles/default.jpg'); ?>" class="card-img-top" alt="<?php echo htmlspecialchars($v['title'] ?? 'Vehicle'); ?>" style="border-radius:18px 18px 0 0;object-fit:cover;height:180px;width:100%;transition:transform 0.3s;">
+                    <div class="card-body" style="background:#fff;border-radius:0 0 18px 18px;">
+                        <h5 class="card-title" style="font-family: 'Playfair Display', Georgia, serif; color:#28a745;"> <?php echo htmlspecialchars($v['title'] ?? ''); ?> </h5>
+                        <p class="card-text"> <?php echo isset($v['description']) ? substr(strip_tags($v['description']),0,100) . '...' : ''; ?></p>
+                    </div>
+                </div>
+            </div>
+            <?php endwhile; ?>
+        </div>
+    </div>
+</section>
+
+<?php include 'includes/footer.php'; ?>

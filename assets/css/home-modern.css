@@ -1,0 +1,1183 @@
+/* Video Block for Testimonials Section */
+.video-block-lg {
+  position: relative;
+  width: 100%;
+  max-width: 570px;
+  border-radius: 18px;
+  overflow: hidden;
+  box-shadow: 0 8px 32px 0 rgba(31,38,135,0.18);
+  background: #222;
+}
+.video-block-lg img {
+  width: 100%;
+  height: 400px;
+  object-fit: cover;
+  display: block;
+  filter: brightness(0.85);
+}
+.video-block-lg .video-content {
+  position: absolute;
+  left: 0; right: 0; bottom: 0;
+  background: rgba(0,0,0,0.55);
+  color: #fff;
+  padding: 24px 18px 14px 18px;
+  width: 100%;
+}
+.video-block-lg h3 {
+  font-size: 1.3rem;
+  font-weight: 700;
+  margin-bottom: 6px;
+}
+.video-block-lg p {
+  font-size: 1.05rem;
+  margin-bottom: 0;
+}
+.video-block-lg .fa-play {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 2.8rem;
+  color: #ffc722;
+  background: rgba(0,0,0,0.55);
+  border-radius: 50%;
+  padding: 18px 22px 18px 24px;
+  z-index: 2;
+  transition: background 0.2s, color 0.2s;
+  box-shadow: 0 2px 12px #0008;
+}
+.video-block-lg .fa-play:hover {
+  background: #ffc722;
+  color: #fff;
+}
+
+/* Vertical Testimonial Cards */
+.testimonial-cards-vertical {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+}
+.testimonial-card-vertical {
+  background: #fff;
+  border-radius: 18px;
+  box-shadow: 0 4px 24px rgba(44,62,80,0.10);
+  padding: 32px 28px 24px 28px;
+  margin-bottom: 18px;
+  position: relative;
+  min-height: 160px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  animation: fadeInUp 1s cubic-bezier(.25,.8,.25,1);
+}
+.testimonial-vertical-text {
+  font-size: 1.08rem;
+  color: #444;
+  margin-bottom: 18px;
+}
+.testimonial-vertical-user {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+.testimonial-vertical-user img {
+  width: 54px;
+  height: 54px;
+  border-radius: 50%;
+  object-fit: cover;
+  box-shadow: 0 2px 8px #ffc72222;
+}
+.testimonial-vertical-title {
+  font-weight: 700;
+  color: #222;
+  font-size: 1.08rem;
+}
+.testimonial-vertical-name {
+  color: #888;
+  font-size: 0.98rem;
+}
+@media (max-width: 991px) {
+  .video-block-lg img { height: 260px; }
+  .testimonial-cards-vertical { gap: 18px; }
+  .testimonial-card-vertical { padding: 18px 10px 14px 10px; }
+}
+/* FAQ Section 3D Model Card Design & Background */
+/* FAQ Section 3D Model Card Design & Background with Corrected Path */
+.faq-3d-bg {
+  position: relative;
+  background: url('../image/banner/2.jpg') center center/cover no-repeat;
+  background-blend-mode: overlay;
+}
+.faq-3d-bg::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: rgba(255,255,255,0.7);
+  z-index: 0;
+}
+.faq-3d-bg > .container {
+  position: relative;
+  z-index: 1;
+}
+.faq-3d-card {
+  border-radius: 18px;
+  box-shadow: 0 8px 32px 0 rgba(31,38,135,0.18);
+  background: linear-gradient(120deg, #fff 60%, #fffcf2 100%);
+  overflow: hidden;
+  transition: transform 0.5s cubic-bezier(.25,.8,.25,1), box-shadow 0.5s;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  height: 100%;
+  margin-bottom: 18px;
+}
+.faq-3d-card:hover {
+  transform: scale(1.06) rotateY(6deg) translateY(-8px);
+  box-shadow: 0 16px 48px 0 #ffc72255, 0 0 32px 0 #fff8;
+}
+.faq-card-img {
+  width: 100%;
+  height: 140px;
+  object-fit: cover;
+  border-top-left-radius: 18px;
+  border-top-right-radius: 18px;
+  display: block;
+}
+.faq-card-content {
+  flex: 1 1 auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 18px 12px 12px 12px;
+}
+.faq-card-content h5 {
+  font-weight: 700;
+  color: var(--accent);
+  font-size: 1.1rem;
+  margin-bottom: 8px;
+  text-align: center;
+}
+.faq-card-content p {
+  color: #222;
+  font-size: 1rem;
+  text-align: center;
+  margin-bottom: 0;
+}
+/* How It Works Timeline Section */
+.how-works-timeline {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 32px;
+  margin: 48px 0 0 0;
+  flex-wrap: wrap;
+}
+.how-step {
+  background: linear-gradient(120deg, #fff 60%, #e3e1d9 100%);
+  border-radius: 16px;
+  box-shadow: 0 4px 24px rgba(44,62,80,0.10);
+  padding: 32px 18px 18px 18px;
+  flex: 1 1 220px;
+  min-width: 220px;
+  max-width: 260px;
+  text-align: center;
+  position: relative;
+  transition: transform 0.4s, box-shadow 0.4s;
+  z-index: 1;
+}
+.how-step:hover {
+  transform: scale(1.06) translateY(-8px);
+  box-shadow: 0 16px 48px 0 #ffc72255;
+}
+.how-icon {
+  width: 64px;
+  height: 64px;
+  background: #dc3545;
+  color: #fff;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2rem;
+  margin: 0 auto 18px auto;
+  box-shadow: 0 2px 12px #dc354555;
+  transition: background 0.3s, color 0.3s, transform 0.3s;
+}
+.how-step:hover .how-icon {
+  background: #ffc722;
+  color: #dc3545;
+  transform: scale(1.12) rotateY(8deg);
+}
+.how-content h5 {
+  font-weight: 700;
+  color: var(--accent);
+  font-size: 1.1rem;
+  margin-bottom: 8px;
+}
+.how-content p {
+  color: #222;
+  font-size: 1rem;
+  margin-bottom: 0;
+}
+@media (max-width: 991px) {
+  .how-works-timeline {
+    flex-wrap: wrap;
+    gap: 18px;
+    justify-content: center;
+  }
+  .how-step {
+    min-width: 180px;
+    max-width: 100%;
+    padding: 24px 10px 14px 10px;
+  }
+}
+/* Popular Experiences 3D Animation Card Design */
+.experience-3d-card {
+  position: relative;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 8px 32px 0 rgba(31,38,135,0.18);
+  background: #fff;
+  transition: transform 0.5s cubic-bezier(.25,.8,.25,1), box-shadow 0.5s;
+  cursor: pointer;
+  height: 320px;
+  display: flex;
+  align-items: stretch;
+}
+.experience-3d-card:hover {
+  transform: scale(1.06) rotateY(8deg) translateY(-8px);
+  box-shadow: 0 16px 48px 0 #ffc72255;
+}
+.experience-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  border-radius: 12px;
+  transition: filter 0.5s, transform 0.5s;
+}
+.experience-3d-card:hover .experience-img {
+  filter: brightness(0.7) blur(1px);
+  transform: scale(1.08);
+}
+.experience-overlay {
+  position: absolute;
+  left: 0;
+  bottom: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(120deg, rgba(255,199,34,0.45) 60%, rgba(220,53,69,0.45) 100%);
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 32px 18px 18px 18px;
+  border-radius: 12px;
+  box-shadow: 0 8px 32px 0 #dc354555;
+  opacity: 0;
+  transition: bottom 0.5s cubic-bezier(.25,.8,.25,1), opacity 0.5s;
+  z-index: 2;
+}
+.experience-3d-card:hover .experience-overlay {
+  bottom: 0;
+  opacity: 1;
+}
+.experience-overlay h5 {
+  font-size: 1.2rem;
+  font-weight: 700;
+  margin-bottom: 10px;
+  color: #fff;
+}
+.experience-overlay p {
+  font-size: 1rem;
+  color: #fff;
+  margin-bottom: 0;
+}
+/* Best Places to Visit Unique Card Designs */
+.best-place-card {
+  border-radius: 22px;
+  box-shadow: 0 8px 32px 0 rgba(31,38,135,0.18);
+  background: #fff;
+  overflow: hidden;
+  margin-bottom: 18px;
+  transition: transform 0.4s, box-shadow 0.4s;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+.best-place-card:hover {
+  transform: scale(1.06) rotateY(4deg) translateY(-8px);
+  box-shadow: 0 16px 48px 0 #ffc72255;
+}
+.best-place-img-wrap {
+  position: relative;
+  width: 100%;
+  height: 180px;
+  overflow: hidden;
+}
+.best-place-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+.best-place-content {
+  padding: 18px 14px 14px 14px;
+  text-align: center;
+}
+.best-place-content p {
+  color: #222;
+  font-size: 1rem;
+  margin-bottom: 0;
+}
+/* Taj Mahal Card - elegant border and shadow */
+.taj-mahal-card {
+  border: 2.5px solid #ffc722;
+  box-shadow: 0 4px 32px #ffc72233;
+}
+.taj-title {
+  color: #dc3545;
+  font-family: 'Playfair Display', serif;
+  font-size: 1.3rem;
+}
+/* Jaipur Card - badge overlay */
+.jaipur-card {
+  border: 2.5px solid #dc3545;
+  box-shadow: 0 4px 32px #dc354533;
+}
+.jaipur-badge {
+  position: absolute;
+  top: 12px;
+  left: 12px;
+  background: #ffc722;
+  color: #fff;
+  font-weight: 700;
+  padding: 4px 14px;
+  border-radius: 16px;
+  font-size: 0.95rem;
+  box-shadow: 0 2px 8px #ffc72255;
+}
+.jaipur-title {
+  color: #ffc722;
+  font-family: 'Playfair Display', serif;
+  font-size: 1.3rem;
+}
+/* Ranthambore Card - icon overlay */
+.ranthambore-card {
+  border: 2.5px solid #28a745;
+  box-shadow: 0 4px 32px #28a74533;
+}
+.ranthambore-icon {
+  position: absolute;
+  bottom: 10px;
+  right: 14px;
+  background: #fff;
+  color: #28a745;
+  border-radius: 50%;
+  padding: 8px;
+  font-size: 1.4rem;
+  box-shadow: 0 2px 8px #28a74533;
+}
+.ranthambore-title {
+  color: #28a745;
+  font-family: 'Playfair Display', serif;
+  font-size: 1.3rem;
+}
+/* Varanasi Card - wave effect */
+.varanasi-card {
+  border: 2.5px solid #0077b6;
+  box-shadow: 0 4px 32px #0077b633;
+}
+.varanasi-wave {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 18px;
+  background: url('data:image/svg+xml;utf8,<svg width="100%25" height="100%25" viewBox="0 0 100 18" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M0 9C20 18 40 0 60 9C80 18 100 0 100 9V18H0V9Z" fill="%230077b6"/></svg>') repeat-x;
+  z-index: 2;
+}
+.varanasi-title {
+  color: #0077b6;
+  font-family: 'Playfair Display', serif;
+  font-size: 1.3rem;
+}
+/* Why Choose Us Equal Image Card Design */
+.why-img-card {
+  border-radius: 24px;
+  box-shadow: 0 8px 32px 0 rgba(31,38,135,0.18), 0 0 0 0 #ffc722;
+  border: 2.5px solid #ffc722;
+  background: #fff;
+  overflow: hidden;
+  transition: transform 0.5s cubic-bezier(.25,.8,.25,1), box-shadow 0.5s, border 0.5s;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  height: 100%;
+}
+.why-img-card:hover {
+  transform: scale(1.06) rotateY(6deg) translateY(-8px);
+  box-shadow: 0 16px 48px 0 #ffc72255, 0 0 32px 0 #fff8;
+  border: 3px solid #dc3545;
+}
+.why-card-img {
+  width: 100%;
+  height: 220px;
+  object-fit: cover;
+  border-top-left-radius: 24px;
+  border-top-right-radius: 24px;
+  display: block;
+}
+.why-card-content {
+  flex: 1 1 auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.why-card-content h5 {
+  font-weight: 700;
+  color: var(--accent);
+  font-size: 1.2rem;
+}
+.why-card-content p {
+  color: #444;
+  font-size: 1rem;
+}
+/* 3D Model Card for Why Choose Us */
+.why-choose-3d-row {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+.card-3d-model {
+  background: linear-gradient(120deg, #fff 60%, #ffffff 100%);
+  border-radius: 24px;
+  box-shadow: 0 8px 32px 0 rgba(31,38,135,0.18), 0 0 0 0 #adadad;
+  border: 2.5px solid #000000;
+  transition: transform 0.5s cubic-bezier(.25,.8,.25,1), box-shadow 0.5s, border 0.5s, background 0.5s;
+  will-change: transform, box-shadow, border;
+  overflow: hidden;
+  z-index: 1;
+  position: relative;
+}
+.card-3d-model:hover {
+  transform: scale(1.08) rotateY(8deg) translateY(-10px);
+  box-shadow: 0 16px 48px 0 #ffc72255, 0 0 32px 0 rgba(255, 255, 255, 0.533);
+  border: 3px solid #fdd700;
+  background: linear-gradient(120deg, #fff4f4 60%, #fff 100%);
+  z-index: 3;
+}
+.model-3d-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #fff;
+  border-radius: 50%;
+  box-shadow: 0 2px 12px rgba(44,62,80,0.10);
+  width: 80px;
+  height: 80px;
+  margin: 0 auto 18px auto;
+  position: relative;
+  transition: box-shadow 0.3s, transform 0.3s;
+}
+.card-3d-model:hover .model-3d-icon {
+  box-shadow: 0 8px 32px #ffc72288;
+  transform: scale(1.12) rotateY(8deg);
+}
+.card-3d-model h5 {
+  font-weight: 700;
+  color: var(--accent);
+  font-size: 1.2rem;
+}
+.card-3d-model p {
+  color: #444;
+  font-size: 1rem;
+}
+/* Modern, creative, 3D, animated homepage styles for tajmahaldaytour */
+
+:root {
+  --primary: #ffc722;
+  --accent: #dc3545;
+  --success: #28a745;
+  --dark: #222;
+  --white: #fff;
+}
+
+body {
+  font-family: 'Playfair Display', Georgia, serif;
+  background: #f8f9fa;
+  color: var(--dark);
+}
+
+.section-title {
+  font-family: 'Playfair Display', Georgia, serif;
+  color: var(--success);
+  font-weight: 700;
+  margin-bottom: 2.5rem;
+  text-align: center;
+  letter-spacing: 1px;
+}
+
+.hero-section {
+  position: relative;
+  min-height: 90vh;
+  background: url('../image/banner/1.jpeg') center center/cover no-repeat;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+.hero-overlay {
+  position: absolute;
+  top: 0; left: 0; width: 100%; height: 100%;
+  background: rgba(0,0,0,0.45);
+  z-index: 1;
+}
+.hero-section .container { z-index: 2; position: relative; }
+.hero-highlight { color: var(--primary); }
+.hero-brand { color: var(--accent); }
+.hero-3d-img { position: absolute; bottom: 0; right: 0; z-index: 2; pointer-events: none; }
+.hero-3d-img img { width: 340px; max-width: 90vw; filter: drop-shadow(0 8px 32px #0008); transform: rotateY(12deg) scale(1.08); border-radius: 32px; }
+@media (max-width:991px) { .hero-3d-img img { width: 220px !important; } }
+@media (max-width:767px) { .hero-section { min-height: 60vh !important; } .hero-3d-img { display: none !important; } .hero-section h1 { font-size: 2.1rem !important; } .hero-section p { font-size: 1.1rem !important; } }
+
+/* 3D Card Slider (Owl) */
+.card-3d-slider .owl-stage-outer { padding: 20px 0; }
+.card-3d-slider .owl-item .card-3d {
+  background: #fff;
+  border-radius: 16px;
+  box-shadow: 0 2px 12px rgba(44,62,80,0.10);
+  padding: 18px 0 18px 0;
+  margin: 0 8px;
+  border: 1.5px solid #f3f3f3;
+  text-align: center;
+  overflow: hidden;
+  transition: box-shadow 0.3s, border 0.3s, transform 0.3s;
+}
+.card-3d-slider .owl-item.active.center .card-3d {
+  transform: perspective(600px) rotateY(0deg) scale(1.08);
+  box-shadow: 0 16px 48px rgba(44,62,80,0.22);
+}
+.card-3d-slider .card-3d img {
+  width: 80px;
+  height: 80px;
+  object-fit: cover;
+  border-radius: 16px;
+  margin-bottom: 12px;
+  background: #f8f8f8;
+  box-shadow: 0 2px 8px #0001;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+.card-3d-slider .card-3d h5 { font-weight: 700; color: var(--accent); font-size: 1.1rem;}
+
+/* Owl Carousel Controls - Modern, visible for categories */
+#categoriesOwl .owl-nav button.owl-prev,
+#categoriesOwl .owl-nav button.owl-next {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: #fff;
+  border-radius: 10px;
+  width: 34px;
+  height: 34px;
+  box-shadow: 0 2px 8px #0002;
+  border: 2px solid #ffc722;
+  color: #dc3545;
+  font-size: 1.2rem;
+  z-index: 10;
+  transition: background 0.2s, color 0.2s, border 0.2s;
+  opacity: 0.95;
+}
+#categoriesOwl .owl-nav button.owl-prev { left: -16px; }
+#categoriesOwl .owl-nav button.owl-next { right: -16px; }
+#categoriesOwl .owl-nav button.owl-prev:hover,
+#categoriesOwl .owl-nav button.owl-next:hover {
+  background: #ffc722;
+  color: #fff;
+  border-color: #dc3545;
+  opacity: 1;
+}
+#categoriesOwl .owl-nav { display: block !important; }
+#categoriesOwl .owl-dots { margin-top: 10px; }
+.card-3d-slider .card-3d p { color: #444; }
+
+/* Section backgrounds */
+.bg-fixed {
+  background-attachment: fixed;
+  background-size: cover;
+  background-position: center;
+}
+
+
+/* Video Gallery */
+.video-card { border-radius: 18px; overflow: hidden; box-shadow: 0 4px 24px rgba(44,62,80,0.10); }
+.video-card iframe { width: 100%; height: 220px; border: none; }
+@media (max-width:767px) { .video-card iframe { height: 160px; } }
+
+/* General */
+.section { padding: 60px 0; }
+
+/* 3D Animated Card Glow & Border */
+.card-3d {
+  position: relative;
+  background: rgba(255,255,255,0.18);
+  box-shadow: 0 8px 32px 0 rgba(31,38,135,0.18), 0 0 0 0 #ffc722;
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border-radius: 20px;
+  border: 2px solid rgba(255,255,255,0.22);
+  transition: transform 0.5s cubic-bezier(.25,.8,.25,1), box-shadow 0.5s, border 0.5s, background 0.5s;
+  will-change: transform, box-shadow, border;
+  overflow: hidden;
+  z-index: 1;
+}
+.card-3d::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: 20px;
+  pointer-events: none;
+  box-shadow: 0 0 32px 0 #ffc72255, 0 0 0 0 #fff0;
+  opacity: 0;
+  transition: opacity 0.5s, box-shadow 0.5s;
+  z-index: 2;
+}
+.card-3d:hover {
+  transform: scale(1.08) rotateY(8deg) translateY(-10px);
+  box-shadow: 0 16px 48px 0 #ffc72255, 0 0 32px 0 #fff8;
+  border: 2.5px solid #ffc722;
+  background: rgba(255,255,255,0.32);
+  z-index: 3;
+}
+.card-3d:hover::before {
+  opacity: 1;
+  box-shadow: 0 0 48px 8px #ffc72299, 0 0 0 0 #fff0;
+}
+.card-3d img {
+  transition: filter 0.5s, transform 0.5s;
+  border-radius: 20px 20px 0 0;
+}
+.card-3d:hover img {
+  filter: brightness(1.12) saturate(1.25) drop-shadow(0 8px 32px #ffc72244);
+  transform: scale(1.06) rotateZ(-2deg);
+}
+
+/* Frosted Glass Overlay for Fixed Background Sections */
+.bg-fixed {
+  position: relative;
+  background-attachment: fixed;
+  background-size: cover;
+  background-position: center;
+  overflow: hidden;
+}
+.bg-fixed::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: rgba(34,34,34,0.45);
+  backdrop-filter: blur(2.5px);
+  z-index: 0;
+}
+.bg-fixed > .container, .bg-fixed > .container-fluid {
+  position: relative;
+  z-index: 2;
+}
+
+/* Section Title with Animated Border */
+.section-title {
+  position: relative;
+  z-index: 2;
+  margin-bottom: 1.2rem;
+  letter-spacing: 1.5px;
+  font-size: 2.3rem;
+  animation: fadeInDown 1s cubic-bezier(.25,.8,.25,1);
+  color: #dc3545;
+  text-shadow: none;
+}
+
+.section-desc {
+  font-size: 1.13rem;
+  color: #444;
+  margin-bottom: 2.2rem;
+  text-align: center;
+  max-width: 700px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* Make section-desc visible on dark/fixed backgrounds */
+#why-choose-us.bg-fixed .section-desc,
+#best-places.bg-fixed .section-desc,
+#best-destinations.bg-fixed .section-desc {
+  color: #fff;
+  text-shadow: 0 2px 8px #000a;
+}
+
+/* Remove shadow and change color for Explore Our Tour Categories */
+#categories .section-title {
+  color: #dc3545;
+  text-shadow: none;
+}
+.section-title::after {
+  content: '';
+  display: block;
+  margin: 18px auto 0 auto;
+  width: 80px;
+  height: 4px;
+  border-radius: 2px;
+  background: linear-gradient(90deg,#ffc722 60%,#fff 100%);
+  animation: borderGlow 2.5s infinite alternate;
+}
+@keyframes borderGlow {
+  0% { box-shadow: 0 0 0 0 #ffc72244; }
+  100% { box-shadow: 0 0 16px 4px #ffc722cc; }
+}
+
+/* Animate Section Fade In */
+.section {
+  animation: fadeInUp 1.2s cubic-bezier(.25,.8,.25,1);
+}
+@keyframes fadeInUp {
+  0% { opacity: 0; transform: translateY(40px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+
+/* About Us Section Enhancements */
+#about-us .img-fluid {
+  border-radius: 24px;
+  box-shadow: 0 12px 48px #ffc72244;
+  border: 4px solid #fff;
+  animation: fadeInLeft 1.2s cubic-bezier(.25,.8,.25,1);
+}
+@keyframes fadeInLeft {
+  0% { opacity: 0; transform: translateX(-60px); }
+  100% { opacity: 1; transform: translateX(0); }
+}
+#about-us .lead {
+  color: #333;
+  font-size: 1.18rem;
+  margin-bottom: 1.2rem;
+}
+#about-us ul {
+  margin-top: 1.5rem;
+}
+#about-us li {
+  margin-bottom: 0.5rem;
+  color: #28a745;
+  font-weight: 600;
+  font-size: 1.08rem;
+}
+
+/* Why Choose Us & Best Places (white text on fixed bg) */
+#why-choose-us.bg-fixed, #best-places.bg-fixed {
+  color: #fff;
+  box-shadow: 0 8px 32px 0 #ffc72222;
+}
+#why-choose-us .card-3d, #best-places .card-3d {
+  background: rgba(34,34,34,0.82);
+  color: #fff;
+  border: 1.5px solid #ffc72255;
+}
+#why-choose-us .card-3d h5, #best-places .card-3d h5 {
+  color: #ffc722;
+}
+
+/* Vehicles Owl Carousel */
+#vehiclesOwl .card-3d {
+  min-height: 270px;
+}
+
+/* Best Destinations Section */
+#best-destinations .card-3d {
+  min-height: 420px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  box-shadow: 0 8px 32px #ffc72222;
+  margin-bottom: 18px;
+}
+#best-destinations .card-3d img {
+  border-radius: 20px 20px 0 0;
+  object-fit: cover;
+}
+#best-destinations .card-3d .p-4 { flex: 1; display: flex; flex-direction: column; justify-content: space-between; }
+#best-destinations .btn { margin-top: 10px; }
+
+/* Popular Experiences */
+#popular-experiences .card-3d {
+  min-height: 340px;
+  box-shadow: 0 8px 32px #ffc72222;
+}
+#popular-experiences .card-3d img {
+  border-radius: 18px 18px 0 0;
+}
+
+/* How It Works */
+#how-it-works .card-3d {
+  min-height: 260px;
+  background: #fff;
+  color: #222;
+  border: 1.5px solid #ffc72255;
+  box-shadow: 0 4px 24px #ffc72222;
+}
+#how-it-works .card-3d h5 { color: #ffc722; }
+#how-it-works .card-3d i { font-size: 2.5rem; }
+
+/* FAQ Accordion */
+#faqs .accordion-item {
+  background: #fff;
+  border-radius: 16px;
+  margin-bottom: 16px;
+  box-shadow: 0 4px 24px #ffc72222;
+  border: none;
+}
+#faqs .accordion-button {
+  border-radius: 16px 16px 0 0;
+  font-weight: 600;
+  font-size: 1.1rem;
+  background: #f8f9fa;
+  color: #222;
+}
+#faqs .accordion-button:not(.collapsed) {
+  background: #ffc722;
+  color: #fff;
+}
+#faqs .accordion-body {
+  font-size: 1.05rem;
+  color: #444;
+}
+
+/* Call to Action */
+/* Call to Action Section with Banner Background */
+/* Call to Action Section with Corrected Banner Background Path */
+#cta {
+  position: relative;
+  background: url('../image/banner/3.webp') center center/cover no-repeat;
+  color: #222;
+  padding: 60px 0 80px 0;
+  box-shadow: 0 8px 32px rgba(44,62,80,0.10);
+}
+#cta::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: rgba(255,255,255,0.65);
+  z-index: 0;
+}
+#cta .container {
+  position: relative;
+  z-index: 1;
+}
+#cta .btn-danger {
+  font-size: 1.3rem;
+  border-radius: 32px;
+  box-shadow: 0 4px 24px #ffc72244;
+  transition: background 0.3s, box-shadow 0.3s;
+}
+#cta .btn-danger:hover {
+  background: #b71c1c;
+  box-shadow: 0 8px 32px #ffc72299;
+}
+
+@media (max-width: 991px) {
+  .section-title { font-size: 1.7rem; }
+  .card-3d { margin-bottom: 18px; }
+  #best-destinations .card-3d, #popular-experiences .card-3d { min-height: 340px; }
+}
+@media (max-width: 767px) {
+  #why-choose-us .card-3d, #best-places .card-3d {
+    margin-bottom: 18px;
+  }
+  #about-us .img-fluid {
+    margin-bottom: 24px;
+  }
+  .section { padding: 36px 0; }
+  #best-destinations .card-3d, #popular-experiences .card-3d { min-height: 260px; }
+  #cta { padding: 36px 0 48px 0; }
+}
+
+/* Best Destinations Section */
+#best-destinations .card-3d {
+  min-height: 420px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  box-shadow: 0 8px 32px rgba(44,62,80,0.18);
+  margin-bottom: 18px;
+}
+#best-destinations .card-3d img {
+  border-radius: 20px 20px 0 0;
+  object-fit: cover;
+}
+#best-destinations .card-3d .p-4 { flex: 1; display: flex; flex-direction: column; justify-content: space-between; }
+#best-destinations .btn { margin-top: 10px; }
+
+/* Popular Experiences */
+#popular-experiences .card-3d {
+  min-height: 340px;
+  box-shadow: 0 8px 32px rgba(44,62,80,0.10);
+}
+#popular-experiences .card-3d img {
+  border-radius: 18px 18px 0 0;
+}
+
+/* How It Works */
+#how-it-works .card-3d {
+  min-height: 260px;
+  background: #fff;
+  color: #222;
+  border: 1px solid #eee;
+  box-shadow: 0 4px 24px rgba(44,62,80,0.10);
+}
+#how-it-works .card-3d h5 { color: #ffc722; }
+#how-it-works .card-3d i { font-size: 2.5rem; }
+
+/* FAQ Accordion */
+#faqs .accordion-item {
+  background: #fff;
+  border-radius: 16px;
+  margin-bottom: 16px;
+  box-shadow: 0 4px 24px rgba(44,62,80,0.08);
+  border: none;
+}
+#faqs .accordion-button {
+  border-radius: 16px 16px 0 0;
+  font-weight: 600;
+  font-size: 1.1rem;
+  background: #f8f9fa;
+  color: #222;
+}
+#faqs .accordion-button:not(.collapsed) {
+  background: #ffc722;
+  color: #fff;
+}
+#faqs .accordion-body {
+  font-size: 1.05rem;
+  color: #444;
+}
+
+/* Call to Action */
+#cta {
+  /* background: linear-gradient(90deg,#ffc722 60%,#fff 100%); */
+  color: #222;
+  padding: 60px 0 80px 0;
+  box-shadow: 0 8px 32px rgba(44,62,80,0.10);
+}
+#cta .btn-danger {
+  font-size: 1.3rem;
+  border-radius: 32px;
+  box-shadow: 0 4px 24px rgba(220,53,69,0.18);
+  transition: background 0.3s, box-shadow 0.3s;
+}
+#cta .btn-danger:hover {
+  background: #b71c1c;
+  box-shadow: 0 8px 32px rgba(220,53,69,0.22);
+}
+
+@media (max-width: 991px) {
+  #best-destinations .card-3d, #popular-experiences .card-3d { min-height: 340px; }
+}
+@media (max-width: 767px) {
+  #best-destinations .card-3d, #popular-experiences .card-3d { min-height: 260px; }
+  #cta { padding: 36px 0 48px 0; }
+}
+
+/* Glassmorphism and 3D Card Animation */
+.card-3d {
+  background: rgba(255,255,255,0.18);
+  box-shadow: 0 8px 32px 0 rgba(31,38,135,0.18);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  border-radius: 20px;
+  border: 1px solid rgba(255,255,255,0.18);
+  transition: transform 0.4s cubic-bezier(.25,.8,.25,1), box-shadow 0.4s, background 0.4s;
+  will-change: transform, box-shadow;
+  position: relative;
+  overflow: hidden;
+}
+.card-3d:hover {
+  transform: scale(1.07) rotateY(6deg) translateY(-8px);
+  box-shadow: 0 16px 48px 0 rgba(31,38,135,0.22);
+  background: rgba(255,255,255,0.32);
+  z-index: 2;
+}
+.card-3d img {
+  transition: filter 0.4s, transform 0.4s;
+}
+.card-3d:hover img {
+  filter: brightness(1.08) saturate(1.2) drop-shadow(0 8px 32px #0004);
+  transform: scale(1.04) rotateZ(-2deg);
+}
+
+/* Section Spacing and Animation */
+.section-title {
+  position: relative;
+  z-index: 2;
+  margin-bottom: 2.5rem;
+  letter-spacing: 1.5px;
+  font-size: 2.3rem;
+  animation: fadeInDown 1s cubic-bezier(.25,.8,.25,1);
+}
+@keyframes fadeInDown {
+  0% { opacity: 0; transform: translateY(-40px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+
+.section {
+  animation: fadeInUp 1.2s cubic-bezier(.25,.8,.25,1);
+}
+@keyframes fadeInUp {
+  0% { opacity: 0; transform: translateY(40px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+
+/* About Us Section Enhancements */
+#about-us .img-fluid {
+  border-radius: 24px;
+  box-shadow: 0 12px 48px rgba(44,62,80,0.22);
+  border: 4px solid #fff;
+  animation: fadeInLeft 1.2s cubic-bezier(.25,.8,.25,1);
+}
+@keyframes fadeInLeft {
+  0% { opacity: 0; transform: translateX(-60px); }
+  100% { opacity: 1; transform: translateX(0); }
+}
+#about-us .lead {
+  color: #333;
+  font-size: 1.18rem;
+  margin-bottom: 1.2rem;
+}
+#about-us ul {
+  margin-top: 1.5rem;
+}
+#about-us li {
+  margin-bottom: 0.5rem;
+  color: #28a745;
+  font-weight: 600;
+  font-size: 1.08rem;
+}
+
+/* Why Choose Us & Best Places (white text on fixed bg) */
+#why-choose-us.bg-fixed, #best-places.bg-fixed {
+  color: #fff;
+  background-attachment: fixed;
+  background-size: cover;
+  background-position: center;
+  position: relative;
+  box-shadow: 0 8px 32px 0 rgba(31,38,135,0.12);
+}
+#why-choose-us .section-title, #best-places .section-title {
+  color: #ffc722;
+  text-shadow: 0 2px 12px #000a;
+}
+#why-choose-us .card-3d, #best-places .card-3d {
+  background: rgba(34,34,34,0.82);
+  color: #fff;
+  border: 1px solid #ffc72222;
+}
+#why-choose-us .card-3d h5, #best-places .card-3d h5 {
+  color: #ffc722;
+}
+
+/* Vehicles Owl Carousel */
+#vehiclesOwl .card-3d {
+  min-height: 270px;
+}
+
+/* Responsive Tweaks */
+@media (max-width: 991px) {
+  .section-title { font-size: 1.7rem; }
+  .card-3d { margin-bottom: 18px; }
+}
+@media (max-width: 767px) {
+  #why-choose-us .card-3d, #best-places .card-3d {
+    margin-bottom: 18px;
+  }
+  #about-us .img-fluid {
+    margin-bottom: 24px;
+  }
+  .section { padding: 36px 0; }
+}
+
+/* Why Choose Us & Best Places (white text on fixed bg) */
+#why-choose-us.bg-fixed, #best-places.bg-fixed {
+  color: #fff;
+  background-attachment: fixed;
+  background-size: cover;
+  background-position: center;
+  position: relative;
+}
+#why-choose-us .section-title, #best-places .section-title {
+  color: #ffc722;
+  text-shadow: 0 2px 12px #000a;
+}
+#why-choose-us .card-3d, #best-places .card-3d {
+  background: rgba(34,34,34,0.92);
+  color: #fff;
+  border: 1px solid #ffc72222;
+}
+#why-choose-us .card-3d h5, #best-places .card-3d h5 {
+  color: #ffc722;
+}
+
+/* About Us Section */
+#about-us .img-fluid {
+  box-shadow: 0 8px 32px rgba(44,62,80,0.18);
+  border-radius: 24px;
+}
+#about-us ul {
+  margin-top: 1.5rem;
+}
+#about-us li {
+  margin-bottom: 0.5rem;
+  color: #28a745;
+  font-weight: 600;
+}
+
+@media (max-width: 767px) {
+  #why-choose-us .card-3d, #best-places .card-3d {
+    margin-bottom: 18px;
+  }
+  #about-us .img-fluid {
+    margin-bottom: 24px;
+  }
+  .social-review-section .col-md-4 {
+    margin-bottom: 24px;
+  }
+  .social-img {
+    max-width: 80%;
+    height: auto;
+    margin: 0 auto;
+    display: block;
+  }
+}
+
+/* Social & Review Section Styles */
+.social-review-section {
+  background: #fffbe7;
+  border-radius: 18px;
+  box-shadow: 0 4px 24px rgba(44,62,80,0.08);
+  padding: 32px 0 16px 0;
+  margin-bottom: 32px;
+}
+.social-review-section .fb-page {
+  box-shadow: 0 2px 12px #0001;
+  border-radius: 12px;
+  overflow: hidden;
+}
+.social-img {
+  max-width: 100%;
+  border-radius: 12px;
+  box-shadow: 0 2px 12px #0001;
+  transition: transform 0.2s;
+}
+.social-img:hover {
+  transform: scale(1.04) rotate(-2deg);
+  box-shadow: 0 8px 24px #ffc72255;
+}

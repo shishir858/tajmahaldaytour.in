@@ -1,0 +1,52 @@
+/* Slider styles for hero section */
+.hero-slider {
+    position: relative;
+    width: 100%;
+    min-height: 420px;
+    overflow: hidden;
+}
+.hero-slider .carousel-item {
+    min-height: 420px;
+    background-size: cover;
+    background-position: center;
+    position: relative;
+}
+.hero-slider .carousel-overlay {
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: rgba(0,0,0,0.45);
+    z-index: 1;
+}
+.hero-slider .carousel-caption {
+    z-index: 2;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: #fff;
+    text-shadow: 0 2px 8px rgba(0,0,0,0.4);
+    width: 100%;
+    max-width: 700px;
+}
+.hero-slider .carousel-caption h1 {
+    font-family: 'Playfair Display', Georgia, serif;
+    font-size: 2.5rem;
+    font-weight: bold;
+    color: #ffc722;
+}
+.hero-slider .carousel-caption p {
+    font-size: 1.25rem;
+    color: #fff;
+}
+.hero-slider .carousel-caption .btn {
+    font-size: 1.1rem;
+    margin: 0 8px;
+}
+@media (max-width: 767px) {
+    .hero-slider .carousel-caption h1 {
+        font-size: 1.5rem;
+    }
+    .hero-slider .carousel-caption p {
+        font-size: 1rem;
+    }
+}
