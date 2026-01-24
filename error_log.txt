@@ -1,0 +1,6 @@
+[23-Jan-2026 15:14:57 Asia/Kolkata] PHP Deprecated:  number_format(): Passing null to parameter #1 ($num) of type float is deprecated in /home/sspsof5/friendstourandtravel.info/admin/includes/functions.php on line 66
+[24-Jan-2026 12:08:00 Asia/Kolkata] PHP Warning:  Undefined variable $title_val in /home/sspsof5/friendstourandtravel.info/admin/packages/add.php on line 113
+[24-Jan-2026 12:19:51 Asia/Kolkata] PHP Warning:  Undefined variable $title_val in /home/sspsof5/friendstourandtravel.info/admin/packages/add.php on line 113
+[24-Jan-2026 12:38:31 Asia/Kolkata] PHP Warning:  Undefined variable $title_val in /home/sspsof5/friendstourandtravel.info/admin/packages/add.php on line 113
+[24-Jan-2026 12:47:00 Asia/Kolkata] PHP Warning:  Undefined variable $title_val in /home/sspsof5/friendstourandtravel.info/admin/packages/add.php on line 113
+[24-Jan-2026 15:03:21 Asia/Kolkata] PHP Warning:  Undefined variable $title_val in /home/sspsof5/friendstourandtravel.info/admin/packages/add.php on line 113

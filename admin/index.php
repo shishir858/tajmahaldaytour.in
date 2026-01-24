@@ -3,7 +3,7 @@ require_once 'includes/config.php';
 
 // If already logged in, redirect to dashboard
 if(isset($_SESSION['admin_id'])) {
-    header('Location: dashboard.php');
+    header('Location: ' . BASE_URL . 'dashboard.php');
     exit;
 }
 
@@ -29,7 +29,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST') {
             // Update last login
             mysqli_query($conn, "UPDATE admin_users SET last_login = NOW() WHERE id = {$admin['id']}");
             
-            header('Location: dashboard.php');
+            header('Location: ' . BASE_URL . 'dashboard.php');
             exit;
         } else {
             $error = 'Invalid username or password';

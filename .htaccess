@@ -1,6 +1,6 @@
 <IfModule mod_rewrite.c>
 RewriteEngine On
-RewriteBase /tajmahaldaytour/
+#RewriteBase https://tajmahaldaytour.in/
 
 # Hide .php extension
 RewriteCond %{REQUEST_FILENAME} !-d
@@ -12,8 +12,8 @@ RewriteRule ^package/([a-zA-Z0-9-]+)$ package.php?slug=$1 [L,QSA]
 
 # Redirect direct .php access to clean URL
 RewriteCond %{THE_REQUEST} ^[A-Z]{3,}\s([^.]+)\.php [NC]
-RewriteRule ^([a-zA-Z0-9-/]+)\.php$ /tajmahaldaytour/$1 [R=301,L]
+RewriteRule ^([a-zA-Z0-9-/]+)\.php$ /$1 [R=301,L]
 
 # Custom 404
-ErrorDocument 404 /tajmahaldaytour/404.php
+ErrorDocument 404 /404.php
 </IfModule>

@@ -19,11 +19,11 @@ if ($is_local) {
 } else {
     // Live Server Settings
     $servername = "localhost";
-    $username = "sspsof5_tdip";
-    $password = "c3BLiUFay6bU";
-    $database = "sspsof5_tajmahal"; // NEW DATABASE
-    define('BASE_URL', '/admin/');
-    define('SITE_URL', 'https://tajmahaldaytour.com/');
+    $username = "sspsof5_tajdayt";
+    $password = "Ak0OPED80o3c";
+    $database = "sspsof5_tajdayt"; // NEW DATABASE
+    define('BASE_URL', 'https://tajmahaldaytour.in/admin/');
+    define('SITE_URL', 'https://tajmahaldaytour.in/');
 }
 
 // Create connection

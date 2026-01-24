@@ -22,9 +22,9 @@ if ($is_local) {
     define('SITE_URL', 'http://localhost/tajmahaldaytour/');
 } else {
     $db_host = "localhost";
-    $db_user = "sspsof5_tdip";
-    $db_pass = "c3BLiUFay6bU";
-    $db_name = "sspsof5_tajmahal";
+    $db_user = "sspsof5_tajdayt";
+    $db_pass = "Ak0OPED80o3c";
+    $db_name = "sspsof5_tajdayt";
     define('SITE_URL', 'https://tajmahaldaytour.in/');
 }
 

@@ -18,7 +18,7 @@ a:hover {
     justify-content: center;
     font-size: 18px;
     color: #fff !important;
-    background: linear-gradient(135deg, #ffc722 0%, #ff7b00 60%, #ff2e63 100%);
+    background: linear-gradient(135deg, #1d2b53 0%, #000000 60%, #1d2b53 100%);
     box-shadow: 0 6px 24px rgba(44,62,80,0.18), 0 1.5px 0 #fff inset;
     transition: box-shadow 0.2s, background 0.2s, transform 0.18s;
     font-family: 'Playfair Display', Georgia, serif;

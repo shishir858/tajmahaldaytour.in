@@ -7,7 +7,7 @@ include 'includes/header.php';
 ?>
 
 <!-- Header Banner -->
-<section class="vehicles-header-banner d-flex align-items-center justify-content-center text-center" style="position:relative;min-height:320px;background:linear-gradient(120deg,#ffc722 0%,#ff7b00 60%,#ff2e63 100%);overflow:hidden;">
+<section class="vehicles-header-banner d-flex align-items-center justify-content-center text-center" style="position:relative;min-height:320px;background:linear-gradient(120deg, #000000 0%, #000000 60%, #1a237e 100%);overflow:hidden;">
     <img src="assets/image/banner/4.jpg" alt="Vehicles Banner" style="position:absolute;top:0;left:0;width:100%;height:100%;object-fit:cover;opacity:0.18;z-index:1;">
     <div class="container position-relative" style="z-index:2;">
         <h1 class="display-4 fw-bold text-white mb-2" style="text-shadow:0 2px 12px #000a;">Our Vehicles</h1>

@@ -103,13 +103,16 @@
     <!-- Scripts -->
     <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
-    
     <!-- Owl Carousel -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.theme.default.min.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
     
-    <script src="<?php echo SITE_URL; ?>assets/js/main-script.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
+
+    <!-- Main Script (after jQuery) -->
+    <script src="<?php echo SITE_URL; ?>assets/js/main-script.js?v=<?php echo time(); ?>"></script>
     
     <script>
         // Back to Top Button
@@ -134,7 +137,7 @@
     <style>
         /* Footer */
         .main-footer {
-            background: #000000;
+            background: #00185b;
             color: #ffffff;
             padding: 60px 0 20px;
         }
