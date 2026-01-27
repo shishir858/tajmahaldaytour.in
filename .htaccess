@@ -1,6 +1,6 @@
 <IfModule mod_rewrite.c>
 RewriteEngine On
-#RewriteBase https://tajmahaldaytour.in/
+RewriteBase /tajmahaldaytour/
 
 # Hide .php extension
 RewriteCond %{REQUEST_FILENAME} !-d
