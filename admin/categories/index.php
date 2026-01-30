@@ -80,7 +80,9 @@ include '../includes/sidebar.php';
                             </td>
                             <td>
                                 <div class="d-flex align-items-center">
-                                    <?php if($category['icon']): ?>
+                                    <?php if(!empty($category['image'])): ?>
+                                        <img src="<?php echo SITE_URL . 'uploads/categories/' . $category['image']; ?>" alt="Image" style="width:38px;height:38px;object-fit:cover;border-radius:6px;margin-right:8px;border:1px solid #eee;">
+                                    <?php elseif($category['icon']): ?>
                                         <i class="<?php echo $category['icon']; ?> me-2 text-primary" style="font-size: 20px;"></i>
                                     <?php endif; ?>
                                     <div>

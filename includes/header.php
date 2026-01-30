@@ -212,9 +212,7 @@
                     <span class="">/</span>
                     <a href="contact.php" style="color: #fff; text-decoration: none;">Contact</a>
                     <span class="">/</span>
-                    <a href="gallery.php" style="color: #fff; text-decoration: none;">Gallery</a>
-                    <span class="">/</span>
-                    <a href="vehicles.php" style="color: #fff; text-decoration: none;">Our Vehicles</a>
+                    <a class="nav-link" href="<?php echo SITE_URL; ?>vehicles">Car Rental</a>
                 </div>
                 <div class="d-flex align-items-center flex-wrap custom-header-right" style="gap: 0.5rem;">
                     <i class="fa fa-mobile-alt"></i>
@@ -252,7 +250,14 @@
                             <?php while($nav_pkg = $nav_packages->fetch_assoc()): ?>
                             <li>
                                 <a class="dropdown-item navbar-dropdown-item" href="<?php echo SITE_URL; ?>package.php?<?php echo $nav_pkg['slug'] ? 'slug=' . urlencode($nav_pkg['slug']) : 'id=' . $nav_pkg['id']; ?>">
-                                    <?php echo htmlspecialchars($nav_pkg['title']); ?>
+                                    <?php
+                                    $words = preg_split('/\s+/', $nav_pkg['title']);
+                                    if(count($words) > 5) {
+                                        echo htmlspecialchars(implode(' ', array_slice($words, 0, 5))) . '...';
+                                    } else {
+                                        echo htmlspecialchars($nav_pkg['title']);
+                                    }
+                                    ?>
                                 </a>
                             </li>
                             <?php endwhile; ?>
@@ -260,9 +265,6 @@
                         <?php endif; ?>
                     </li>
                     <?php endwhile; ?>
-                    <li class="nav-item">
-                        <a class="nav-link" href="<?php echo SITE_URL; ?>vehicles">Car Rental</a>
-                    </li>
                     <li class="nav-item">
                         <a class="nav-link navbar-contact-btn" href="#" id="openBookTourModalHeader">
                             <i class="fas fa-phone me-2"></i>Contact Us
@@ -306,7 +308,14 @@
             $nav_categories = $conn->query("SELECT * FROM categories WHERE is_active = 1 AND show_in_header = 1 ORDER BY display_order");
             while($nav_cat = $nav_categories->fetch_assoc()):
             ?>
-            <li style="padding-left: 20px;"><a href="<?php echo SITE_URL; ?>tour-packages?category=<?php echo $nav_cat['id']; ?>"><?php echo htmlspecialchars($nav_cat['name']); ?></a></li>
+            <li style="padding-left: 20px;"><a href="<?php echo SITE_URL; ?>tour-packages?category=<?php echo $nav_cat['id']; ?>"><?php
+                $words = preg_split('/\s+/', $nav_cat['name']);
+                if(count($words) > 6) {
+                    echo htmlspecialchars(implode(' ', array_slice($words, 0, 6))) . '...';
+                } else {
+                    echo htmlspecialchars($nav_cat['name']);
+                }
+            ?></a></li>
             <?php endwhile; ?>
         </ul>
     </div>
@@ -421,9 +430,10 @@
             </div>
             <div class="modal-body">
                 <p style="text-align: center; color: #666; margin-bottom: 30px;">Fill in your details and we'll get back to you shortly</p>
-                <form id="bookTourFormHome" method="POST" action="<?php echo SITE_URL; ?>submit.php">
+                <form id="bookTourFormHome" method="POST" action="<?php echo SITE_URL; ?>submit-package.php">
                     <input type="hidden" name="package_id" value="0">
-                    <input type="hidden" name="package_title" value="General Inquiry">
+                    <input type="hidden" name="redirect_url" value="/index.php">
+                    <input type="hidden" name="enquiry_back_url" value="/index.php">
                     <div class="mb-3">
                         <label class="form-label" style="font-weight: 600; color: #333;"><i class="fas fa-user"></i> Full Name *</label>
                         <input type="text" class="form-control" name="name" required style="padding: 12px 15px; border: 2px solid #eee; border-radius: 10px; font-size: 1rem;" placeholder="Enter your full name">
@@ -443,7 +453,7 @@
                         </div>
                         <div class="col-md-6">
                             <label class="form-label" style="font-weight: 600; color: #333;"><i class="fas fa-users"></i> Guests *</label>
-                            <input type="number" class="form-control" name="guests" required min="1" value="2" style="padding: 12px 15px; border: 2px solid #eee; border-radius: 10px; font-size: 1rem;">
+                            <input type="number" class="form-control" name="people" required min="1" value="2" style="padding: 12px 15px; border: 2px solid #eee; border-radius: 10px; font-size: 1rem;">
                         </div>
                     </div>
                     <div class="mb-4">
@@ -454,45 +464,7 @@
                         <i class="fas fa-check-circle"></i> Submit Booking Request
                     </button>
                     <div id="formMessageHome" style="margin-top: 20px; display: none;"></div>
-                    <script>
-                    document.addEventListener('DOMContentLoaded', function() {
-                        var form = document.getElementById('bookTourFormHome');
-                        if(form) {
-                            form.addEventListener('submit', function(e) {
-                                e.preventDefault();
-                                var formData = new FormData(form);
-                                var msgDiv = document.getElementById('formMessageHome');
-                                msgDiv.style.display = 'none';
-                                fetch(form.action, {
-                                    method: 'POST',
-                                    body: formData,
-                                    headers: {'X-Requested-With': 'XMLHttpRequest'}
-                                })
-                                .then(response => response.text())
-                                .then(data => {
-                                    msgDiv.innerHTML = data;
-                                    msgDiv.style.display = 'block';
-                                    if(data.toLowerCase().includes('thank you')) {
-                                        Swal.fire({icon: 'success', title: 'Success', text: data, timer: 3500, showConfirmButton: false});
-                                        setTimeout(function(){
-                                            var modal = bootstrap.Modal.getInstance(document.getElementById('bookTourModal'));
-                                            if(modal) modal.hide();
-                                            form.reset();
-                                            msgDiv.style.display = 'none';
-                                        }, 2000);
-                                    } else {
-                                        Swal.fire({icon: 'error', title: 'Error', text: data, timer: 3500, showConfirmButton: false});
-                                    }
-                                })
-                                .catch(() => {
-                                    msgDiv.innerHTML = 'Something went wrong. Please try again.';
-                                    msgDiv.style.display = 'block';
-                                    Swal.fire({icon: 'error', title: 'Error', text: 'Something went wrong. Please try again.', timer: 3500, showConfirmButton: false});
-                                });
-                            });
-                        }
-                    });
-                    </script>
+                    <!-- No AJAX: normal form submit for thankyou page redirect -->
                     <p style="text-align: center; margin-top: 20px; color: #999; font-size: 0.9rem;">
                         <i class="fas fa-lock"></i> Your information is safe and secure
                     </p>

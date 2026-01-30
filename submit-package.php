@@ -1,83 +1,196 @@
-// Debug: Log POST data for troubleshooting
-file_put_contents(__DIR__ . '/debug_submit_package.log', date('Y-m-d H:i:s') . ' POST: ' . print_r($_POST, true) . "\n", FILE_APPEND);
 <?php
-// Enable error reporting for debugging
-ini_set('display_errors', 1);
-ini_set('display_startup_errors', 1);
-error_reporting(E_ALL);
-use PHPMailer\PHPMailer\PHPMailer;
-use PHPMailer\PHPMailer\Exception;
-require __DIR__ . '/vendor/autoload.php';
-
 session_start();
-$name = isset($_POST['name']) ? trim(strip_tags($_POST['name'])) : '';
-$email = isset($_POST['email']) ? trim(strip_tags($_POST['email'])) : '';
-$phone = isset($_POST['phone']) ? trim(strip_tags($_POST['phone'])) : '';
-$travel_date = isset($_POST['travel_date']) ? trim(strip_tags($_POST['travel_date'])) : '';
-$guests = isset($_POST['guests']) ? trim(strip_tags($_POST['guests'])) : '';
-$message = isset($_POST['message']) ? trim(strip_tags($_POST['message'])) : '';
-$package_id = isset($_POST['package_id']) ? trim(strip_tags($_POST['package_id'])) : '';
-$package_title = isset($_POST['package_title']) ? trim(strip_tags($_POST['package_title'])) : '';
+error_reporting(E_ALL);
+ini_set('display_errors', 1);
 
-// Always redirect back to package page
-$redirect_url = '/package.php';
-if (!empty($package_title)) {
-    // Try to use slug if available (from hidden input, or you can add a hidden slug field in the form)
-    if (!empty($_POST['package_slug'])) {
-        $redirect_url .= '?slug=' . urlencode($_POST['package_slug']);
-    } elseif (!empty($package_id)) {
-        $redirect_url .= '?id=' . urlencode($package_id);
-    }
-} elseif (!empty($package_id)) {
-    $redirect_url .= '?id=' . urlencode($package_id);
-}
+require_once 'includes/config.php';
 
-if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    // Validate required fields
-    if ($name === '' || $phone === '' || $email === '' || $travel_date === '' || $guests === '') {
-        $_SESSION['form_status'] = 'error';
-        $_SESSION['form_message'] = 'Please fill all required fields.';
-        header('Location: ' . $redirect_url);
+
+
+if($_SERVER['REQUEST_METHOD'] == 'POST') {
+    try {
+        $phone = mysqli_real_escape_string($conn, $_POST['phone'] ?? '');
+        $name = mysqli_real_escape_string($conn, $_POST['name'] ?? '');
+        $package_id = intval($_POST['package_id'] ?? 0);
+        $travel_date = mysqli_real_escape_string($conn, $_POST['travel_date'] ?? '');
+        $people = mysqli_real_escape_string($conn, $_POST['people'] ?? '1');
+        $email = mysqli_real_escape_string($conn, $_POST['email'] ?? '');
+        $message = mysqli_real_escape_string($conn, $_POST['message'] ?? '');
+        $redirect_url = !empty($_POST['redirect_url']) ? $_POST['redirect_url'] : 'index.php';
+
+        // Validation - name and phone both required
+        if(empty($name)) {
+            $_SESSION['enquiry_message'] = '<div style="max-width:600px;margin:40px auto;padding:30px;background:#fff3f3;border:1px solid #ffcccc;color:#a00;font-size:1.2em;">Please enter your name.</div>';
+            $_SESSION['enquiry_back_url'] = $redirect_url;
+            header('Location: thankyou.php');
+            exit;
+        }
+        if(empty($phone)) {
+            $_SESSION['enquiry_message'] = '<div style="max-width:600px;margin:40px auto;padding:30px;background:#fff3f3;border:1px solid #ffcccc;color:#a00;font-size:1.2em;">Please enter your phone number.</div>';
+            $_SESSION['enquiry_back_url'] = $redirect_url;
+            header('Location: thankyou.php');
+            exit;
+        }
+        
+        // Use provided name
+        $customer_name = $name;
+        
+        // If package not selected, use default message
+        $package_title = 'General Enquiry';
+        if($package_id > 0) {
+            $package_result = $conn->query("SELECT title FROM tour_packages WHERE id = $package_id");
+            if($package_result && $package_result->num_rows > 0) {
+                $package = $package_result->fetch_assoc();
+                $package_title = $package['title'];
+            }
+        }
+        
+        // Use default date if not provided
+        if(empty($travel_date)) {
+            $travel_date = date('Y-m-d', strtotime('+7 days')); // Default to 7 days from now
+        }
+        
+        // Check if customer exists with phone number
+        $check_customer = $conn->query("SELECT id, name, email FROM customers WHERE phone = '$phone' LIMIT 1");
+        
+        if($check_customer && $check_customer->num_rows > 0) {
+            // Customer exists - update name if provided
+            $customer = $check_customer->fetch_assoc();
+            $customer_id = $customer['id'];
+            
+            // Update name if new name is provided and current is 'Guest'
+            if(!empty($name) && $customer['name'] == 'Guest') {
+                $conn->query("UPDATE customers SET name = '$customer_name' WHERE id = $customer_id");
+            }
+        } else {
+            // Create new customer with unique email based on phone
+            $guest_email = 'guest_' . $phone . '@example.com';
+            $insert_customer = "INSERT INTO customers (name, email, phone, created_at) 
+                               VALUES ('$customer_name', '$email', '$phone', NOW())";
+            if(!$conn->query($insert_customer)) {
+                $_SESSION['enquiry_message'] = '<div style="max-width:600px;margin:40px auto;padding:30px;background:#fff3f3;border:1px solid #ffcccc;color:#a00;font-size:1.2em;">Database Error: Unable to save customer details.</div>';
+                $_SESSION['enquiry_back_url'] = $redirect_url;
+                header('Location: thankyou.php');
+                exit;
+            }
+            $customer_id = $conn->insert_id;
+        }
+        
+        // Generate unique booking number
+        $booking_number = 'ENQ' . date('Ymd') . str_pad($customer_id, 4, '0', STR_PAD_LEFT) . rand(100, 999);
+        
+        // Create message
+        $enquiry_message = "Quick Enquiry - Name: $customer_name | Phone: $phone";
+        if(!empty($people)) {
+            $enquiry_message .= " | Guests: $people";
+        }
+        if($package_id > 0) {
+            $enquiry_message .= " | Package: $package_title";
+        }
+        if(!empty($message)) {
+            $enquiry_message .= " | Message: $message";
+        }
+        
+        // Insert into bookings table (use package_id = 1 if not selected)
+
+        // Always use a valid package_id (fallback to first available if needed)
+        $final_package_id = 1;
+        if ($package_id > 0) {
+            // Check if this package_id exists
+            $check_pkg = $conn->query("SELECT id FROM tour_packages WHERE id = $package_id LIMIT 1");
+            if ($check_pkg && $check_pkg->num_rows > 0) {
+                $final_package_id = $package_id;
+            } else {
+                // fallback to first available package
+                $pkg_row = $conn->query("SELECT id FROM tour_packages ORDER BY id ASC LIMIT 1");
+                if ($pkg_row && $pkg_row->num_rows > 0) {
+                    $final_package_id = $pkg_row->fetch_assoc()['id'];
+                }
+            }
+        } else {
+            // fallback to first available package
+            $pkg_row = $conn->query("SELECT id FROM tour_packages ORDER BY id ASC LIMIT 1");
+            if ($pkg_row && $pkg_row->num_rows > 0) {
+                $final_package_id = $pkg_row->fetch_assoc()['id'];
+            }
+        }
+        
+        $insert_query = "INSERT INTO bookings (
+            booking_number,
+            customer_id, 
+            package_id, 
+            travel_date,
+            number_of_persons,
+            number_of_days,
+            total_price,
+            final_price,
+            booking_status,
+            special_requests,
+            created_at
+        ) VALUES (
+            '$booking_number',
+            $customer_id, 
+            $final_package_id, 
+            '$travel_date',
+            " . intval($people) . ",
+            1,
+            0.00,
+            0.00,
+            'pending',
+            '$enquiry_message',
+            NOW()
+        )";
+        
+        if(!$conn->query($insert_query)) {
+            $_SESSION['enquiry_message'] = '<div style="max-width:600px;margin:40px auto;padding:30px;background:#fff3f3;border:1px solid #ffcccc;color:#a00;font-size:1.2em;">Database Error: Unable to save enquiry.</div>';
+            $_SESSION['enquiry_back_url'] = $redirect_url;
+            header('Location: thankyou.php');
+            exit;
+        }
+        
+        // Enquiry saved successfully
+        $enquiry_id = $conn->insert_id;
+        
+        // Send email notification
+        require_once __DIR__ . '/send-mail.php';
+        $mailResult = sendEnquiryEmail([
+            'booking_number' => $booking_number,
+            'name' => $customer_name,
+            'phone' => $phone,
+            'email' => $email,
+            'package_title' => $package_title,
+            'travel_date' => $travel_date,
+            'people' => $people,
+            'message' => $message
+        ]);
+
+        if ($mailResult !== true) {
+            $_SESSION['enquiry_message'] = '<div style="max-width:600px;margin:40px auto;padding:30px;background:#fff3f3;border:1px solid #ffcccc;color:#a00;font-size:1.2em;">Enquiry saved, but mail sending failed:<br>' . htmlspecialchars($mailResult) . '</div>';
+            $_SESSION['enquiry_back_url'] = $redirect_url;
+            header('Location: thankyou.php');
+            exit;
+        }
+
+        // Success HTML page
+        $_SESSION['enquiry_message'] = '<div style="max-width:600px;margin:40px auto;padding:30px;background:#f3fff3;border:1px solid #ccffcc;color:#080;font-size:1.2em;">Thank you! Your enquiry has been submitted successfully.<br><br><strong>Reference:</strong> ' . htmlspecialchars($booking_number) . '<br>We will contact you within 24 hours!</div>';
+        $_SESSION['enquiry_back_url'] = $redirect_url;
+        header('Location: thankyou.php');
+        exit;
+        
+    } catch (Exception $e) {
+        $_SESSION['enquiry_message'] = '<div style="max-width:600px;margin:40px auto;padding:30px;background:#fff3f3;border:1px solid #ffcccc;color:#a00;font-size:1.2em;">❌ Error: ' . htmlspecialchars($e->getMessage()) . '</div>';
+        $_SESSION['enquiry_back_url'] = !empty($_POST['redirect_url']) ? $_POST['redirect_url'] : 'index.php';
+        header('Location: thankyou.php');
         exit;
     }
-
-    $mail = new PHPMailer(true);
-    try {
-        $mail->isSMTP();
-        $mail->Host       = 'vps136692.inmotionhosting.com';
-        $mail->SMTPAuth   = true;
-        $mail->Username   = 'contact@abdholispunjabidholwala.online';
-        $mail->Password   = 'FVpvlgs1ZAvz';
-        $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
-        $mail->Port       = 587;
-
-        $mail->setFrom('contact@abdholispunjabidholwala.online', 'Website Booking');
-        $mail->addAddress('shishir4.ssp@gmail.com', 'Abdholispunjab');
-        $mail->addAddress('sandypanwar9507@gmail.com', 'Sandy Panwar');
-
-        $mail->isHTML(true);
-        $mail->Subject = 'New Tour Booking Request';
-        $mail->Body = "<h2>New Tour Booking Request</h2>"
-            . "<p><strong>Name:</strong> {$name}</p>"
-            . "<p><strong>Email:</strong> {$email}</p>"
-            . "<p><strong>Phone:</strong> {$phone}</p>"
-            . "<p><strong>Travel Date:</strong> {$travel_date}</p>"
-            . "<p><strong>Guests:</strong> {$guests}</p>"
-            . "<p><strong>Package:</strong> {$package_title} (ID: {$package_id})</p>"
-            . "<p><strong>Message:</strong> {$message}</p>"
-            . "<p><strong>Date Submitted:</strong> ".date('d-m-Y H:i:s')."</p>";
-
-        $mail->send();
-        $_SESSION['form_status'] = 'success';
-        $_SESSION['form_message'] = 'Thank you! Your booking request has been received. We will contact you shortly.';
-    } catch (Exception $e) {
-        $_SESSION['form_status'] = 'error';
-        $_SESSION['form_message'] = 'Mail sending failed: ' . $mail->ErrorInfo;
-    }
-    header('Location: ' . $redirect_url);
+    
+} else {
+    // Debug output for non-POST requests
+    echo '<h2 style="color:red">Invalid request method (debug)</h2>';
+    echo '<pre>_SERVER: ' . print_r($_SERVER, true) . '</pre>';
+    echo '<pre>_POST: ' . print_r($_POST, true) . '</pre>';
+    echo '<pre>_GET: ' . print_r($_GET, true) . '</pre>';
+    echo '<a href="index.php">Back to Home</a>';
     exit;
 }
-
-// For any GET or direct access, always redirect to package page
-header('Location: ' . $redirect_url);
-exit;
+?>

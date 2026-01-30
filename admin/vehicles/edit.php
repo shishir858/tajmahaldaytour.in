@@ -46,11 +46,12 @@ if($_SERVER['REQUEST_METHOD'] == 'POST') {
         if($upload_result['success']) {
             // Delete old image
             if(!empty($vehicle['image'])) {
-                delete_image('../uploads/vehicles/' . $vehicle['image']);
+                // Use robust path, same as categories
+                delete_image('vehicles/' . $vehicle['image']);
             }
             $image_name = $upload_result['filename'];
         } else {
-            $errors[] = $upload_result['error'];
+            $errors[] = $upload_result['message'];
         }
     }
     
@@ -189,8 +190,8 @@ include '../includes/sidebar.php';
 
                         <div class="mb-3">
                             <div class="form-check form-switch">
-                                <input type="checkbox" name="is_available" class="form-check-input" id="is_available" 
-                                       <?php echo ($vehicle['is_available'] == 1) ? 'checked' : ''; ?>>
+                                    <input type="checkbox" name="is_available" class="form-check-input" id="is_available" 
+                                        <?php echo (isset($vehicle['is_available']) && $vehicle['is_available'] == 1) ? 'checked' : ''; ?>>
                                 <label class="form-check-label" for="is_available">Available for Booking</label>
                             </div>
                         </div>

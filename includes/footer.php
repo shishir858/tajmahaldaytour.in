@@ -92,6 +92,11 @@
         <i class="fab fa-whatsapp"></i>
     </a>
     <?php endif; ?>
+
+    <!-- Fixed Call Button -->
+    <a href="tel:+919876543210" class="fixed-call-btn" title="Call Now">
+    <i class="fas fa-phone"></i>
+    </a>
     
 
     
@@ -361,6 +366,38 @@
                 align-items: center;
                 gap: 20px;
             }
+        }
+
+        /* Fixed Call Button */
+        .fixed-call-btn {
+        position: fixed;
+        right: 22px;
+        bottom: 135px;
+        z-index: 9999;
+        background: #ffc722;
+        color: #fff;
+        width: 60px;
+        height: 60px;
+        border-radius: 50%;
+        box-shadow: 0 4px 16px #0002;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 2rem;
+        cursor: pointer;
+        transition: background 0.2s;
+        }
+        .fixed-call-btn:hover {
+        background: #128c7e;
+        }
+        @media (max-width: 600px) {
+        .fixed-call-btn {
+            right: 12px;
+            bottom: 135px;
+            width: 60px;
+            height: 60px;
+            font-size: 1.6rem;
+        }
         }
     </style>
 

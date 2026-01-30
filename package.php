@@ -622,7 +622,14 @@ include 'includes/header.php';
                     <div class="card-body p-5">
                         <h3 class="mb-4 text-center fw-bold text-primary"><i class="fas fa-paper-plane me-2 text-primary"></i> Book This Tour</h3>
                         <p class="text-center text-muted mb-4">Fill in your details and we'll get back to you shortly</p>
-                        <form class="needs-validation" method="POST" action="submit-package.php" novalidate>
+                        <?php if (!empty($_SESSION['enquiry_message'])): ?>
+                            <div class="mb-4">
+                                <?php echo $_SESSION['enquiry_message']; unset($_SESSION['enquiry_message']); ?>
+                            </div>
+                        <?php endif; ?>
+                        <form class="needs-validation" method="POST" action="<?php echo (strpos($_SERVER['HTTP_HOST'], 'localhost') !== false ? '/tajmahaldaytour/submit-package.php' : '/submit-package.php'); ?>">
+                            <input type="hidden" name="package_id" value="<?php echo $package_id; ?>">
+                            <input type="hidden" name="redirect_url" value="<?php echo htmlspecialchars($_SERVER['REQUEST_URI']); ?>">
                             <div class="row g-3">
                                 <div class="col-md-6">
                                     <label for="bookName" class="form-label fw-semibold">Full Name *</label>
@@ -646,7 +653,7 @@ include 'includes/header.php';
                                 </div>
                                 <div class="col-md-6">
                                     <label for="bookGuests" class="form-label fw-semibold">Guests *</label>
-                                    <input type="number" class="form-control" id="bookGuests" name="guests" required min="1" value="2">
+                                    <input type="number" class="form-control" id="bookGuests" name="people" required min="1" value="2">
                                     <div class="invalid-feedback">Please enter number of guests.</div>
                                 </div>
                                 <div class="col-md-6">

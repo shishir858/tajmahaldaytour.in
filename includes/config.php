@@ -50,11 +50,12 @@ function getSetting($key) {
 }
 
 // SMTP Configuration
-define('SMTP_HOST', 'smtp.tajmahaldaytour.com');
-define('SMTP_USER', 'info@tajmahaldaytour.com');
-define('SMTP_PASS', 'REPLACE_WITH_REAL_PASSWORD');
+// SMTP Configuration
+define('SMTP_HOST', 'vps136692.inmotionhosting.com');
+define('SMTP_USER', 'contact@tajmahaldaytour.in');
+define('SMTP_PASS', 'TxWFzKR5K8x0');
 define('SMTP_PORT', 465);
-define('SMTP_FROM_EMAIL', 'info@tajmahaldaytour.com');
-define('SMTP_FROM_NAME', 'tajmahaldaytour');
-define('SMTP_ADMIN_EMAIL', 'info@tajmahaldaytour.com');
+define('SMTP_FROM_EMAIL', 'contact@tajmahaldaytour.in');
+define('SMTP_FROM_NAME', 'Tajmahal Day Tour');
+define('SMTP_ADMIN_EMAIL', 'shishir4.ssp@gmail.com');
 ?>

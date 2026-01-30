@@ -34,11 +34,24 @@ if($_SERVER['REQUEST_METHOD'] == 'POST') {
     $display_order = intval($_POST['display_order']);
     $is_active = isset($_POST['is_active']) ? 1 : 0;
     $show_in_header = isset($_POST['show_in_header']) ? 1 : 0;
-    
+    $image = $category['image'];
+    // Handle image upload
+    if(isset($_FILES['image']) && $_FILES['image']['error'] === UPLOAD_ERR_OK) {
+        $img_tmp = $_FILES['image']['tmp_name'];
+        $img_name = basename($_FILES['image']['name']);
+        $img_ext = strtolower(pathinfo($img_name, PATHINFO_EXTENSION));
+        $allowed = ['jpg','jpeg','png','webp','gif','avif'];
+        if(in_array($img_ext, $allowed)) {
+            $new_img_name = uniqid('cat_', true) . '.' . $img_ext;
+            $dest = __DIR__ . '/../../uploads/categories/' . $new_img_name;
+            if(move_uploaded_file($img_tmp, $dest)) {
+                $image = $new_img_name;
+            }
+        }
+    }
     // Check if slug already exists (excluding current category)
     $check_query = "SELECT id FROM categories WHERE slug = '$slug' AND id != $id";
     $check_result = mysqli_query($conn, $check_query);
-    
     if(mysqli_num_rows($check_result) > 0) {
         $error = 'Slug already exists. Please use a different name or slug.';
     } else {
@@ -47,11 +60,11 @@ if($_SERVER['REQUEST_METHOD'] == 'POST') {
                          slug = '$slug',
                          description = '$description',
                          icon = '$icon',
+                         image = '$image',
                          display_order = $display_order,
                          is_active = $is_active,
                          show_in_header = $show_in_header
                          WHERE id = $id";
-        
         if(mysqli_query($conn, $update_query)) {
             header('Location: index.php?msg=updated');
             exit;
@@ -92,7 +105,7 @@ include '../includes/sidebar.php';
         <div class="admin-card">
             <h2>Category Information</h2>
             
-            <form method="POST" action="">
+            <form method="POST" action="" enctype="multipart/form-data">
                 <div class="mb-3">
                     <label for="name" class="form-label">Category Name <span class="text-danger">*</span></label>
                     <input type="text" class="form-control" id="name" name="name" required 
@@ -124,6 +137,17 @@ include '../includes/sidebar.php';
                         <small class="text-muted">
                             <a href="https://fontawesome.com/icons" target="_blank">Browse icons</a>
                         </small>
+                    </div>
+                    <div class="col-md-6 mb-3">
+                        <label for="image" class="form-label">Category Image</label>
+                        <input type="file" class="form-control" id="image" name="image" accept="image/*">
+                        <?php if(!empty($category['image'])): ?>
+                            <div class="mt-2">
+                                <img src="<?php echo SITE_URL . 'uploads/categories/' . $category['image']; ?>" alt="Current Image" style="max-width:120px;max-height:80px;border-radius:6px;">
+                                <div><small class="text-muted">Current image</small></div>
+                            </div>
+                        <?php endif; ?>
+                        <small class="text-muted">Upload a new image to replace (jpg, png, webp, gif, avif)</small>
                     </div>
                     
                     <div class="col-md-6 mb-3">

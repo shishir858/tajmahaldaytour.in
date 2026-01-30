@@ -8,45 +8,18 @@ include 'includes/header.php';
 
 <!-- Modern Hero Section -->
 <section id="hero" class="hero-section d-flex align-items-center justify-content-center text-center">
-  <!-- <div class="hero-overlay"></div> -->
+  <div class="hero-overlay"></div>
   <div class="container position-relative">
-    <h1 class="display-3 fw-bold text-white mb-3">Discover <span class="hero-highlight">India</span> with <span
+    <h1 class="display-3 text-white mb-3">Discover <span class="hero-highlight">India</span> with <span
         class="hero-brand">Expert Guided Tours</span></h1>
-    <p class="lead fw-bold mb-4" style="color: rgb(0 6 94);">Private Day Tours • Taj Mahal Specialists • Trusted Drivers & Guides</p>
+    <p class="lead fw-bold mb-4" style="color: rgb(255, 255, 255);">Private Day Tours • Taj Mahal Specialists • Trusted Drivers & Guides</p>
     <a href="tour-packages" class="btn btn-primary btn-lg me-2 mt-3">View Tour Packages</a>
     <a href="#" class="btn btn-light btn-lg mt-3" id="openBookTourModal" style="color:#dc3545; font-weight:700;">Contact Us</a>
   </div>
   <div class="hero-3d-img d-none d-md-block">
-    <img src="assets/image/banner/4.jpg" alt="Taj Mahal 3D">
+    <img src="assets/image/banner/8.jpg" alt="Taj Mahal 3D">
   </div>
 </section>
-
-<!-- 3D Tour Categories Slider (Dynamic) -->
-<section id="categories" class="section bg-light">
-  <div class="container">
-    <h2 class="section-title">Explore Our Tour Categories</h2>
-    <div class="section-desc">Browse our curated selection of tour categories designed for every kind of traveler. Find your perfect journey across India.</div>
-    <div class="owl-carousel card-3d-slider" id="categoriesOwl">
-      <?php
-        $cat_query = $conn->query("SELECT * FROM categories WHERE is_active = 1 AND show_in_header = 1 ORDER BY display_order ASC, id DESC");
-        // Taj Mahal image URL (local or CDN)
-        $tajmahal_img = 'assets/image/tajmahal.jpg';
-        while($cat = $cat_query->fetch_assoc()):
-          // Always show Taj Mahal image for all categories
-      ?>
-      <a href="tour-packages.php?category=<?php echo $cat['id']; ?>" class="card-3d" style="text-decoration:none;color:inherit;">
-        <img src="<?php echo $tajmahal_img; ?>"
-          alt="Taj Mahal - <?php echo htmlspecialchars($cat['name']); ?>"
-          style="height:80px;width:80px;object-fit:cover;margin:0 auto 18px auto;display:block;border-radius:12px;">
-        <h5><?php echo htmlspecialchars($cat['name']); ?></h5>
-      </a>
-      <?php endwhile; ?>
-    </div>
-  </div>
-</section>
-
-<!-- More creative sections (Why Choose Us, About Us, Best Places, Vehicles, Testimonials, Videos, etc.) can be added here in the same 3D/animated style. -->
-
 
 <!-- About Us Section -->
 <section id="about-us" class="section" style="background-color: #e1f0ff85;">
@@ -72,6 +45,54 @@ include 'includes/header.php';
   </div>
 </section>
 
+<!-- Special Offer + Sliding Cards Section -->
+<section class="section offer-slider-section" style="background:transparent;">
+  <div class="container px-0">
+    <div class="d-flex flex-row flex-wrap offer-slider-row">
+      <!-- Left: Offer Text -->
+      <div class="offer-slider-left d-flex align-items-center justify-content-center">
+        <div class="offer-slider-bg-night">
+          <div class="offer-slider-overlay-night"></div>
+          <div class="offer-slider-content-night">
+            <h2 class="fw-bold mb-3 offer-slider-title-night">
+              Discover the Taj Mahal Like Never Before<br><span class="offer-slider-highlight-night">Exclusive Agra Day Tours</span>
+            </h2>
+            <p class="mb-0 offer-slider-desc-night">Handpicked Taj Mahal tour packages for every traveler.<br>Experience Agra's wonders with our expert guides!</p>
+          </div>
+        </div>
+      </div>
+      <!-- Right: Sliding Cards -->
+      <div class="offer-slider-right">
+        <div class="owl-carousel offer-cards-carousel-night">
+          <?php
+          // Show all categories statically as offer cards
+          $all_categories = $conn->query("SELECT * FROM categories WHERE is_active = 1 ORDER BY display_order");
+          while ($cat = $all_categories->fetch_assoc()):
+            $img = isset($cat['image']) ? trim($cat['image']) : '';
+            if ($img && $img !== 'default.jpg') {
+                if (strpos($img, 'assets/') === 0) {
+                    $img_url = SITE_URL . $img;
+                } else if (strpos($img, 'http://') === 0 || strpos($img, 'https://') === 0) {
+                    $img_url = $img;
+                } else {
+                    $img_url = SITE_URL . 'uploads/categories/' . $img;
+                }
+                ?>
+                <div class="offer-card-night">
+                  <img src="<?php echo $img_url; ?>" alt="<?php echo htmlspecialchars($cat['name']); ?>">
+                  <div class="offer-card-caption-night"><?php echo htmlspecialchars($cat['name']); ?></div>
+                </div>
+                <?php
+            }
+          endwhile; ?>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
 <!-- Category Wise Tour Packages (New Design) -->
 <section class="category-packages-section py-5">
   <div class="container">
@@ -85,83 +106,84 @@ include 'includes/header.php';
 </section>
 <!-- ...existing code... -->
 <?php
-    $categories = $conn->query("SELECT * FROM categories WHERE is_active = 1 ORDER BY display_order");
-    while($category = $categories->fetch_assoc()):
-    $cat_id = $category['id'];
-    $packages = $conn->query("SELECT * FROM tour_packages WHERE category_id = $cat_id AND is_active = 1 ORDER BY created_at DESC LIMIT 10");
+$categories = $conn->query("SELECT * FROM categories WHERE is_active = 1 ORDER BY display_order");
+while ($category = $categories->fetch_assoc()):
+  $cat_id = $category['id'];
+  $packages = $conn->query("SELECT * FROM tour_packages WHERE category_id = $cat_id AND is_active = 1 ORDER BY created_at DESC LIMIT 10");
 
-    // DEBUG: Show number of packages for each category
-    // echo '<div style="color:red;text-align:center;font-size:18px;">Category: '.htmlspecialchars($category['name']).' | Packages found: '.$packages->num_rows.'</div>';
+  // DEBUG: Show number of packages for each category
+  // echo '<div style="color:red;text-align:center;font-size:18px;">Category: '.htmlspecialchars($category['name']).' | Packages found: '.$packages->num_rows.'</div>';
 
-    if($packages->num_rows > 0):
+  if ($packages->num_rows > 0):
 ?>
-<section class="category-packages-section" style="padding-top: 0!important;">
-    <div class="container">
+    <section class="category-packages-section" style="padding-top: 0!important;">
+      <div class="container">
         <div class="section-heading-wrapper">
-            <p class="section-label text-dark">Best Packages</p>
-            <h2 class="section-main-heading section-title"><?php echo htmlspecialchars($category['name']); ?></h2>
-            <div class="section-desc mb-3" style="margin:0 auto;font-size:1.08rem;color:#555;">
-              <?php echo htmlspecialchars($category['description'] ?? ''); ?>
-            </div>
+          <p class="section-label text-dark">Best Packages</p>
+          <h2 class="section-main-heading section-title"><?php echo htmlspecialchars($category['name']); ?></h2>
+          <div class="section-desc mb-3" style="margin:0 auto;font-size:1.08rem;color:#555;">
+            <?php echo htmlspecialchars($category['description'] ?? ''); ?>
+          </div>
         </div>
 
         <div class="category-packages-carousel owl-carousel owl-theme">
-            <?php while($package = $packages->fetch_assoc()): ?>
+          <?php while ($package = $packages->fetch_assoc()): ?>
             <div class="category-package-card">
-                <div class="category-package-image-wrapper">
-                    <?php
-                    $img = $package['featured_image'] ?? 'default.jpg';
-                    if (strpos($img, 'assets/') === 0) {
-                      $img_url = SITE_URL . $img;
-                    } else {
-                      $img_url = SITE_URL . 'uploads/packages/' . $img;
-                    }
-                    ?>
-                    <img class="category-package-image"
-                       src="<?php echo $img_url; ?>"
-                       alt="<?php echo htmlspecialchars($package['title']); ?>">
+              <div class="category-package-image-wrapper">
+                <?php
+                $img = $package['featured_image'] ?? 'default.jpg';
+                if (strpos($img, 'assets/') === 0) {
+                  $img_url = SITE_URL . $img;
+                } else {
+                  $img_url = SITE_URL . 'uploads/packages/' . $img;
+                }
+                ?>
+                <img class="category-package-image"
+                  src="<?php echo $img_url; ?>"
+                  alt="<?php echo htmlspecialchars($package['title']); ?>">
+              </div>
+
+              <div class="category-package-details">
+                <div class="category-package-meta">
+                  <span><i class="far fa-calendar"></i>
+                    <?php echo $package['duration_days']; ?> Nights /
+                    <?php echo $package['duration_nights']; ?> Days
+                  </span>
+                  <span><i class="fas fa-users"></i> 4 Persons</span>
                 </div>
 
-                <div class="category-package-details">
-                    <div class="category-package-meta">
-                        <span><i class="far fa-calendar"></i>
-                            <?php echo $package['duration_days']; ?> Nights /
-                            <?php echo $package['duration_nights']; ?> Days
-                        </span>
-                        <span><i class="fas fa-users"></i> 4 Persons</span>
-                    </div>
+                <h3 class="category-package-location">
+                  <?php echo htmlspecialchars(substr($package['title'], 0, 50)); ?>
+                </h3>
 
-                    <h3 class="category-package-location">
-                        <?php echo htmlspecialchars(substr($package['title'],0,50)); ?>
-                    </h3>
+                <h4 class="category-package-title">
+                  <?php
+                  $words = explode(' ', $package['title']);
+                  echo implode(' ', array_slice($words, 0, 4));
+                  if (count($words) > 4) echo '...';
+                  ?>
+                </h4>
 
-                    <h4 class="category-package-title">
-                        <?php
-                        $words = explode(' ', $package['title']);
-                        echo implode(' ', array_slice($words,0,4));
-                        if(count($words)>4) echo '...';
-                        ?>
-                    </h4>
-
-                    <div class="category-package-actions">
-                        <a href="tel:+919876543210" class="btn-call-now">
-                            Call Now <i class="fas fa-arrow-right"></i>
-                        </a>
-                        <a href="<?php echo SITE_URL; ?>package.php?<?php echo $package['slug'] ? 'slug=' . urlencode($package['slug']) : 'id=' . $package['id']; ?>"
-                           class="btn-book-now">
-                          Book Now<i class="fas fa-arrow-right"></i>
-                        </a>
-                    </div>
+                <div class="category-package-actions">
+                  <a href="tel:+919876543210" class="btn-call-now">
+                    Call Now <i class="fas fa-arrow-right"></i>
+                  </a>
+                  <a href="<?php echo SITE_URL; ?>package.php?<?php echo $package['slug'] ? 'slug=' . urlencode($package['slug']) : 'id=' . $package['id']; ?>"
+                    class="btn-book-now">
+                    Book Now<i class="fas fa-arrow-right"></i>
+                  </a>
                 </div>
+              </div>
             </div>
-            <?php endwhile; ?>
+          <?php endwhile; ?>
         </div>
-    </div>
-</section>
-<?php endif; endwhile; ?>
+      </div>
+    </section>
+<?php endif;
+endwhile; ?>
 
 <!-- Best Places Section (with fixed background) -->
-<section id="best-places" class="section bg-fixed"
+<section id="best-places" class="section  bg-fixed"
   style="background-image:url('https://images.unsplash.com/photo-1465156799763-2c087c332922?auto=format&fit=crop&w=1200&q=80');">
   <div class="container">
     <h2 class="section-title">Best Places to Visit</h2>
@@ -277,7 +299,7 @@ include 'includes/header.php';
       </div>
       <div class="col-lg-4 col-md-6 mb-4">
         <div class="card-3d-model why-img-card text-center p-0">
-          <img src="assets/image/itineraries.jpg" alt="Custom Itineraries" class="why-card-img">
+          <img src="assets/image/Itineraries.jpg" alt="Custom Itineraries" class="why-card-img">
           <div class="why-card-content p-3">
             <h5 class="mt-2">Custom Itineraries</h5>
             <p>Personalized tours to match your interests and schedule.</p>
@@ -531,6 +553,7 @@ include 'includes/header.php';
   });
 </script>
 
+
 <?php include 'includes/footer.php'; ?>
 
 <!-- Owl Carousel CSS/JS -->
@@ -552,24 +575,38 @@ include 'includes/header.php';
       autoplayTimeout: 4000,
       smartSpeed: 700,
       responsive: {
-        0: { items: 1 },
-        480: { items: 2 },
-        768: { items: 3 },
-        1200: { items: 5 }
+        0: {
+          items: 1
+        },
+        480: {
+          items: 2
+        },
+        768: {
+          items: 3
+        },
+        1200: {
+          items: 5
+        }
       }
     });
     // Initialize the dynamic category packages carousels
     $('.category-packages-carousel').owlCarousel({
-      loop:true,
-      margin:25,
-      nav:true,
-      dots:false,
-      autoplay:true,
-      autoplayTimeout:4000,
-      responsive:{
-        0:{ items:1 },
-        768:{ items:2 },
-        1200:{ items:3 }
+      loop: true,
+      margin: 25,
+      nav: true,
+      dots: false,
+      autoplay: true,
+      autoplayTimeout: 4000,
+      responsive: {
+        0: {
+          items: 1
+        },
+        768: {
+          items: 2
+        },
+        1200: {
+          items: 3
+        }
       }
     });
     // Vehicles carousel
@@ -583,10 +620,18 @@ include 'includes/header.php';
       autoplayTimeout: 4000,
       smartSpeed: 700,
       responsive: {
-        0: { items: 1 },
-        480: { items: 2 },
-        768: { items: 3 },
-        1200: { items: 5 }
+        0: {
+          items: 1
+        },
+        480: {
+          items: 2
+        },
+        768: {
+          items: 3
+        },
+        1200: {
+          items: 5
+        }
       }
     });
     // Testimonial carousel (if present)
@@ -601,12 +646,43 @@ include 'includes/header.php';
         autoplayTimeout: 4000,
         smartSpeed: 700,
         responsive: {
-          0: { items: 1 },
-          480: { items: 2 },
-          768: { items: 3 },
-          1200: { items: 5 }
+          0: {
+            items: 1
+          },
+          480: {
+            items: 2
+          },
+          768: {
+            items: 3
+          },
+          1200: {
+            items: 5
+          }
         }
       });
     }
+  });
+</script>
+
+<script>
+  $(document).ready(function() {
+    $('.offer-cards-carousel-night').owlCarousel({
+      loop: true,
+      margin: 18,
+      nav: true,
+      dots: false,
+      autoplay: true,
+      autoplayTimeout: 4000,
+      smartSpeed: 700,
+      items: 2,
+      responsive: {
+        0: {
+          items: 1
+        },
+        768: {
+          items: 2
+        }
+      }
+    });
   });
 </script>

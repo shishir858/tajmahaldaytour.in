@@ -27,7 +27,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST') {
         if($upload_result['success']) {
             $image_name = $upload_result['filename'];
         } else {
-            $errors[] = $upload_result['error'];
+            $errors[] = $upload_result['message'];
         }
     }
     
