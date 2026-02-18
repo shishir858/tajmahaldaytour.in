@@ -5,7 +5,7 @@ a, a:visited {
     transition: color 0.2s;
 }
 a:hover {
-    color: #ffc107;
+    color: #dc3545;
 }
 
 .btn-primary, .navbar-contact-btn {
