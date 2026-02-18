@@ -1,0 +1,86 @@
+[23-Jan-2026 15:14:57 Asia/Kolkata] PHP Deprecated:  number_format(): Passing null to parameter #1 ($num) of type float is deprecated in /home/sspsof5/friendstourandtravel.info/admin/includes/functions.php on line 66
+[24-Jan-2026 12:08:00 Asia/Kolkata] PHP Warning:  Undefined variable $title_val in /home/sspsof5/friendstourandtravel.info/admin/packages/add.php on line 113
+[24-Jan-2026 12:19:51 Asia/Kolkata] PHP Warning:  Undefined variable $title_val in /home/sspsof5/friendstourandtravel.info/admin/packages/add.php on line 113
+[24-Jan-2026 12:38:31 Asia/Kolkata] PHP Warning:  Undefined variable $title_val in /home/sspsof5/friendstourandtravel.info/admin/packages/add.php on line 113
+[24-Jan-2026 12:47:00 Asia/Kolkata] PHP Warning:  Undefined variable $title_val in /home/sspsof5/friendstourandtravel.info/admin/packages/add.php on line 113
+[24-Jan-2026 15:03:21 Asia/Kolkata] PHP Warning:  Undefined variable $title_val in /home/sspsof5/friendstourandtravel.info/admin/packages/add.php on line 113
+[28-Jan-2026 17:31:58 Asia/Kolkata] PHP Warning:  Undefined array key "description" in /home/sspsof5/tajmahaldaytour.in/admin/vehicles/edit.php on line 171
+[28-Jan-2026 17:31:58 Asia/Kolkata] PHP Deprecated:  htmlspecialchars(): Passing null to parameter #1 ($string) of type string is deprecated in /home/sspsof5/tajmahaldaytour.in/admin/vehicles/edit.php on line 171
+[28-Jan-2026 17:31:58 Asia/Kolkata] PHP Warning:  Undefined array key "is_available" in /home/sspsof5/tajmahaldaytour.in/admin/vehicles/edit.php on line 193
+[28-Jan-2026 17:32:42 Asia/Kolkata] PHP Warning:  Undefined array key "error" in /home/sspsof5/tajmahaldaytour.in/admin/vehicles/edit.php on line 53
+[28-Jan-2026 17:32:42 Asia/Kolkata] PHP Warning:  Undefined array key "description" in /home/sspsof5/tajmahaldaytour.in/admin/vehicles/edit.php on line 171
+[28-Jan-2026 17:32:42 Asia/Kolkata] PHP Deprecated:  htmlspecialchars(): Passing null to parameter #1 ($string) of type string is deprecated in /home/sspsof5/tajmahaldaytour.in/admin/vehicles/edit.php on line 171
+[28-Jan-2026 17:32:42 Asia/Kolkata] PHP Warning:  Undefined array key "is_available" in /home/sspsof5/tajmahaldaytour.in/admin/vehicles/edit.php on line 193
+[28-Jan-2026 17:36:55 Asia/Kolkata] PHP Warning:  Undefined array key "error" in /home/sspsof5/tajmahaldaytour.in/admin/vehicles/edit.php on line 53
+[28-Jan-2026 17:36:55 Asia/Kolkata] PHP Warning:  Undefined array key "description" in /home/sspsof5/tajmahaldaytour.in/admin/vehicles/edit.php on line 171
+[28-Jan-2026 17:36:55 Asia/Kolkata] PHP Deprecated:  htmlspecialchars(): Passing null to parameter #1 ($string) of type string is deprecated in /home/sspsof5/tajmahaldaytour.in/admin/vehicles/edit.php on line 171
+[28-Jan-2026 17:36:55 Asia/Kolkata] PHP Warning:  Undefined array key "is_available" in /home/sspsof5/tajmahaldaytour.in/admin/vehicles/edit.php on line 193
+[28-Jan-2026 17:42:09 Asia/Kolkata] PHP Warning:  Undefined array key "description" in /home/sspsof5/tajmahaldaytour.in/admin/vehicles/edit.php on line 172
+[28-Jan-2026 17:42:09 Asia/Kolkata] PHP Deprecated:  htmlspecialchars(): Passing null to parameter #1 ($string) of type string is deprecated in /home/sspsof5/tajmahaldaytour.in/admin/vehicles/edit.php on line 172
+[28-Jan-2026 17:42:13 Asia/Kolkata] PHP Warning:  Undefined array key "description" in /home/sspsof5/tajmahaldaytour.in/admin/vehicles/edit.php on line 172
+[28-Jan-2026 17:42:13 Asia/Kolkata] PHP Deprecated:  htmlspecialchars(): Passing null to parameter #1 ($string) of type string is deprecated in /home/sspsof5/tajmahaldaytour.in/admin/vehicles/edit.php on line 172
+[28-Jan-2026 17:43:02 Asia/Kolkata] PHP Warning:  Undefined array key "description" in /home/sspsof5/tajmahaldaytour.in/admin/vehicles/edit.php on line 172
+[28-Jan-2026 17:43:02 Asia/Kolkata] PHP Deprecated:  htmlspecialchars(): Passing null to parameter #1 ($string) of type string is deprecated in /home/sspsof5/tajmahaldaytour.in/admin/vehicles/edit.php on line 172
+[28-Jan-2026 17:43:40 Asia/Kolkata] PHP Warning:  Undefined array key "description" in /home/sspsof5/tajmahaldaytour.in/admin/vehicles/edit.php on line 172
+[28-Jan-2026 17:43:40 Asia/Kolkata] PHP Deprecated:  htmlspecialchars(): Passing null to parameter #1 ($string) of type string is deprecated in /home/sspsof5/tajmahaldaytour.in/admin/vehicles/edit.php on line 172
+[28-Jan-2026 17:44:15 Asia/Kolkata] PHP Warning:  Undefined array key "description" in /home/sspsof5/tajmahaldaytour.in/admin/vehicles/edit.php on line 172
+[28-Jan-2026 17:44:15 Asia/Kolkata] PHP Deprecated:  htmlspecialchars(): Passing null to parameter #1 ($string) of type string is deprecated in /home/sspsof5/tajmahaldaytour.in/admin/vehicles/edit.php on line 172
+[28-Jan-2026 17:46:05 Asia/Kolkata] PHP Warning:  Undefined array key "description" in /home/sspsof5/tajmahaldaytour.in/admin/vehicles/edit.php on line 172
+[28-Jan-2026 17:46:05 Asia/Kolkata] PHP Deprecated:  htmlspecialchars(): Passing null to parameter #1 ($string) of type string is deprecated in /home/sspsof5/tajmahaldaytour.in/admin/vehicles/edit.php on line 172
+[28-Jan-2026 17:46:13 Asia/Kolkata] PHP Warning:  Undefined array key "description" in /home/sspsof5/tajmahaldaytour.in/admin/vehicles/edit.php on line 172
+[28-Jan-2026 17:46:13 Asia/Kolkata] PHP Deprecated:  htmlspecialchars(): Passing null to parameter #1 ($string) of type string is deprecated in /home/sspsof5/tajmahaldaytour.in/admin/vehicles/edit.php on line 172
+[28-Jan-2026 17:46:18 Asia/Kolkata] PHP Warning:  Undefined array key "description" in /home/sspsof5/tajmahaldaytour.in/admin/vehicles/edit.php on line 172
+[28-Jan-2026 17:46:18 Asia/Kolkata] PHP Deprecated:  htmlspecialchars(): Passing null to parameter #1 ($string) of type string is deprecated in /home/sspsof5/tajmahaldaytour.in/admin/vehicles/edit.php on line 172
+[28-Jan-2026 17:46:22 Asia/Kolkata] PHP Warning:  Undefined array key "description" in /home/sspsof5/tajmahaldaytour.in/admin/vehicles/edit.php on line 172
+[28-Jan-2026 17:46:22 Asia/Kolkata] PHP Deprecated:  htmlspecialchars(): Passing null to parameter #1 ($string) of type string is deprecated in /home/sspsof5/tajmahaldaytour.in/admin/vehicles/edit.php on line 172
+[28-Jan-2026 17:53:58 Asia/Kolkata] PHP Warning:  Undefined array key "description" in /home/sspsof5/tajmahaldaytour.in/admin/vehicles/edit.php on line 172
+[28-Jan-2026 17:53:58 Asia/Kolkata] PHP Deprecated:  htmlspecialchars(): Passing null to parameter #1 ($string) of type string is deprecated in /home/sspsof5/tajmahaldaytour.in/admin/vehicles/edit.php on line 172
+[28-Jan-2026 17:54:21 Asia/Kolkata] PHP Warning:  Undefined array key "description" in /home/sspsof5/tajmahaldaytour.in/admin/vehicles/edit.php on line 172
+[28-Jan-2026 17:54:21 Asia/Kolkata] PHP Deprecated:  htmlspecialchars(): Passing null to parameter #1 ($string) of type string is deprecated in /home/sspsof5/tajmahaldaytour.in/admin/vehicles/edit.php on line 172
+[28-Jan-2026 18:01:57 Asia/Kolkata] PHP Warning:  Undefined array key "description" in /home/sspsof5/tajmahaldaytour.in/admin/vehicles/edit.php on line 172
+[28-Jan-2026 18:01:57 Asia/Kolkata] PHP Deprecated:  htmlspecialchars(): Passing null to parameter #1 ($string) of type string is deprecated in /home/sspsof5/tajmahaldaytour.in/admin/vehicles/edit.php on line 172
+[28-Jan-2026 18:02:09 Asia/Kolkata] PHP Fatal error:  Uncaught mysqli_sql_exception: Data truncated for column 'type' at row 1 in /home/sspsof5/tajmahaldaytour.in/admin/vehicles/edit.php:71
+Stack trace:
+#0 /home/sspsof5/tajmahaldaytour.in/admin/vehicles/edit.php(71): mysqli_query()
+#1 {main}
+  thrown in /home/sspsof5/tajmahaldaytour.in/admin/vehicles/edit.php on line 71
+[28-Jan-2026 18:02:13 Asia/Kolkata] PHP Warning:  Undefined array key "description" in /home/sspsof5/tajmahaldaytour.in/admin/vehicles/edit.php on line 172
+[28-Jan-2026 18:02:13 Asia/Kolkata] PHP Deprecated:  htmlspecialchars(): Passing null to parameter #1 ($string) of type string is deprecated in /home/sspsof5/tajmahaldaytour.in/admin/vehicles/edit.php on line 172
+[28-Jan-2026 18:02:30 Asia/Kolkata] PHP Fatal error:  Uncaught mysqli_sql_exception: Data truncated for column 'type' at row 1 in /home/sspsof5/tajmahaldaytour.in/admin/vehicles/edit.php:71
+Stack trace:
+#0 /home/sspsof5/tajmahaldaytour.in/admin/vehicles/edit.php(71): mysqli_query()
+#1 {main}
+  thrown in /home/sspsof5/tajmahaldaytour.in/admin/vehicles/edit.php on line 71
+[28-Jan-2026 18:02:33 Asia/Kolkata] PHP Warning:  Undefined array key "description" in /home/sspsof5/tajmahaldaytour.in/admin/vehicles/edit.php on line 172
+[28-Jan-2026 18:02:33 Asia/Kolkata] PHP Deprecated:  htmlspecialchars(): Passing null to parameter #1 ($string) of type string is deprecated in /home/sspsof5/tajmahaldaytour.in/admin/vehicles/edit.php on line 172
+[28-Jan-2026 18:02:34 Asia/Kolkata] PHP Warning:  Undefined array key "description" in /home/sspsof5/tajmahaldaytour.in/admin/vehicles/edit.php on line 172
+[28-Jan-2026 18:02:34 Asia/Kolkata] PHP Deprecated:  htmlspecialchars(): Passing null to parameter #1 ($string) of type string is deprecated in /home/sspsof5/tajmahaldaytour.in/admin/vehicles/edit.php on line 172
+[28-Jan-2026 18:06:25 Asia/Kolkata] PHP Warning:  Undefined array key "description" in /home/sspsof5/tajmahaldaytour.in/admin/vehicles/edit.php on line 172
+[28-Jan-2026 18:06:25 Asia/Kolkata] PHP Deprecated:  htmlspecialchars(): Passing null to parameter #1 ($string) of type string is deprecated in /home/sspsof5/tajmahaldaytour.in/admin/vehicles/edit.php on line 172
+[28-Jan-2026 18:06:35 Asia/Kolkata] PHP Warning:  Undefined array key "description" in /home/sspsof5/tajmahaldaytour.in/admin/vehicles/edit.php on line 172
+[28-Jan-2026 18:06:35 Asia/Kolkata] PHP Deprecated:  htmlspecialchars(): Passing null to parameter #1 ($string) of type string is deprecated in /home/sspsof5/tajmahaldaytour.in/admin/vehicles/edit.php on line 172
+[28-Jan-2026 18:06:51 Asia/Kolkata] PHP Fatal error:  Uncaught mysqli_sql_exception: Data truncated for column 'type' at row 1 in /home/sspsof5/tajmahaldaytour.in/admin/vehicles/edit.php:71
+Stack trace:
+#0 /home/sspsof5/tajmahaldaytour.in/admin/vehicles/edit.php(71): mysqli_query()
+#1 {main}
+  thrown in /home/sspsof5/tajmahaldaytour.in/admin/vehicles/edit.php on line 71
+[28-Jan-2026 18:07:06 Asia/Kolkata] PHP Warning:  Undefined array key "description" in /home/sspsof5/tajmahaldaytour.in/admin/vehicles/edit.php on line 172
+[28-Jan-2026 18:07:06 Asia/Kolkata] PHP Deprecated:  htmlspecialchars(): Passing null to parameter #1 ($string) of type string is deprecated in /home/sspsof5/tajmahaldaytour.in/admin/vehicles/edit.php on line 172
+[29-Jan-2026 10:17:42 Asia/Kolkata] PHP Fatal error:  Uncaught mysqli_sql_exception: Data truncated for column 'type' at row 1 in /home/sspsof5/tajmahaldaytour.in/admin/vehicles/add.php:44
+Stack trace:
+#0 /home/sspsof5/tajmahaldaytour.in/admin/vehicles/add.php(44): mysqli_query()
+#1 {main}
+  thrown in /home/sspsof5/tajmahaldaytour.in/admin/vehicles/add.php on line 44
+[29-Jan-2026 10:19:44 Asia/Kolkata] PHP Warning:  Undefined array key "description" in /home/sspsof5/tajmahaldaytour.in/admin/vehicles/edit.php on line 172
+[29-Jan-2026 10:19:44 Asia/Kolkata] PHP Deprecated:  htmlspecialchars(): Passing null to parameter #1 ($string) of type string is deprecated in /home/sspsof5/tajmahaldaytour.in/admin/vehicles/edit.php on line 172
+[29-Jan-2026 10:19:51 Asia/Kolkata] PHP Fatal error:  Uncaught mysqli_sql_exception: Data truncated for column 'type' at row 1 in /home/sspsof5/tajmahaldaytour.in/admin/vehicles/edit.php:71
+Stack trace:
+#0 /home/sspsof5/tajmahaldaytour.in/admin/vehicles/edit.php(71): mysqli_query()
+#1 {main}
+  thrown in /home/sspsof5/tajmahaldaytour.in/admin/vehicles/edit.php on line 71
+[29-Jan-2026 10:22:45 Asia/Kolkata] PHP Warning:  Undefined array key "description" in /home/sspsof5/tajmahaldaytour.in/admin/vehicles/edit.php on line 172
+[29-Jan-2026 10:22:45 Asia/Kolkata] PHP Deprecated:  htmlspecialchars(): Passing null to parameter #1 ($string) of type string is deprecated in /home/sspsof5/tajmahaldaytour.in/admin/vehicles/edit.php on line 172
+[29-Jan-2026 10:22:52 Asia/Kolkata] PHP Warning:  Undefined array key "description" in /home/sspsof5/tajmahaldaytour.in/admin/vehicles/edit.php on line 172
+[29-Jan-2026 10:22:52 Asia/Kolkata] PHP Deprecated:  htmlspecialchars(): Passing null to parameter #1 ($string) of type string is deprecated in /home/sspsof5/tajmahaldaytour.in/admin/vehicles/edit.php on line 172
+[29-Jan-2026 10:23:06 Asia/Kolkata] PHP Warning:  Undefined array key "description" in /home/sspsof5/tajmahaldaytour.in/admin/vehicles/edit.php on line 172
+[29-Jan-2026 10:23:06 Asia/Kolkata] PHP Deprecated:  htmlspecialchars(): Passing null to parameter #1 ($string) of type string is deprecated in /home/sspsof5/tajmahaldaytour.in/admin/vehicles/edit.php on line 172

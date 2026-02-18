@@ -1,0 +1,26 @@
+<IfModule mod_rewrite.c>
+RewriteEngine On
+RewriteBase /
+
+# SEO Friendly URL for vehicle detail - /vehicle/slug or /vehicle/id
+RewriteRule ^vehicle/([0-9]+)/?$ vehicle-detail.php?id=$1 [NC,L]
+RewriteRule ^vehicle/([a-zA-Z0-9-]+)/?$ vehicle-detail.php?slug=$1 [NC,L]
+
+# SEO-friendly package details URL: /package/slug (MUST BE BEFORE GENERAL RULES)
+RewriteRule ^package/([a-zA-Z0-9-]+)$ package.php?slug=$1 [L,QSA]
+
+# Hide .php extension for GET only, allow direct .php for POST (form submissions)
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_METHOD} =GET
+RewriteRule ^([a-zA-Z0-9-/]+)$ $1.php [L]
+
+
+# Do NOT redirect .php to clean URL for POST requests (fixes form POST)
+# (Disabled to allow POST to .php files)
+#RewriteCond %{THE_REQUEST} ^[A-Z]{3,}\s([^.]+)\.php [NC]
+#RewriteRule ^([a-zA-Z0-9-/]+)\.php$ /$1 [R=301,L]
+
+# Custom 404
+ErrorDocument 404 /404.php
+</IfModule>
